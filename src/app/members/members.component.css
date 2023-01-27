@@ -1,0 +1,13 @@
+td {
+    width: 50%;
+    vertical-align: middle;
+  }
+
+td.td-small{
+    width: 0%;
+}
+
+td.td-center{
+    text-align: center;
+}
+

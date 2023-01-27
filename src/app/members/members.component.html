@@ -1,0 +1,111 @@
+<div class="alert alert-danger" *ngIf="apiError">
+    {{apiError}} 
+</div>
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>DataTables</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Üyeler</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <ng-template [ngTemplateOutlet]="membersList"></ng-template>
+    <!-- Main content -->
+
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <ng-template #membersList>
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Üye Listesi</h3>
+                  <button class="btn btn-success float-right"><i class="fa fa-plus"></i></button>
+                </div>
+                <div class="form-check mx-3">
+                    <input type="checkbox" [(ngModel)]="displayPassives" class="form-check-input" name="" id="displayPassives">
+                    <label for="displayPassives" class="form-check-label">Pasif Üyeler</label>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <!-- <table datatable id="datatable1" class="table table-bordered table-striped"> -->
+                  <table datatable id="datatable1" class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Ad</th>
+                      <th>Soyad</th>
+                      <th>Aktif</th>
+                      <th>Web</th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let member of getMembers(); let i = index"  [class]="{'bg-danger': !member.active}">
+                          <td class="td-small">{{member.id}}</td>
+                          <td>{{member.firstName}}</td>
+                          <td>{{member.lastName}}</td>
+                          <td class="td-small td-center" *ngIf="member.active"><i class="fas fa-check"></i></td>
+                          <td class="td-small td-center" *ngIf="!member.active"><i class="fas fa-times"></i></td>
+                          <td class="td-small td-center" *ngIf="member.webReservation"><i class="fas fa-check"></i></td>
+                          <td class="td-small td-center" *ngIf="!member.webReservation"><i class="fas fa-times"></i></td>
+                          <td class="td-small"><button class="btn btn-warning"><i class="far fa-edit"></i></button></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Aktif</th>
+                            <th>Web</th>
+                            <th></th>
+                          </tr>
+                    </tfoot>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+</ng-template>
+  
+<!-- Page specific script -->
+<!-- <script>
+    $(function () {
+        $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script> -->
+
