@@ -6,19 +6,19 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
+      <!-- <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="">Ana Sayfa</a></li>
               <li class="breadcrumb-item active">Üyeler</li>
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>/.container-fluid -->
     </section>
     <ng-template [ngTemplateOutlet]="membersList"></ng-template>
     <!-- Main content -->
@@ -34,7 +34,7 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Üye Listesi</h3>
-                  <button class="btn btn-success float-right"><i class="fa fa-plus"></i></button>
+                  <a routerLink="/members/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <div class="form-check mx-3">
                     <input type="checkbox" [(ngModel)]="displayPassives" class="form-check-input" name="" id="displayPassives">
@@ -90,22 +90,3 @@
       </section>
 </ng-template>
   
-<!-- Page specific script -->
-<!-- <script>
-    $(function () {
-        $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script> -->
-

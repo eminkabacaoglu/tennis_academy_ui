@@ -21,7 +21,7 @@ export class MemberService{
         
     }
 
-    getMemberById(memberId:string):Observable<Member>{
+    getMemberById(memberId:number):Observable<Member>{
         return this.http.get<Member>(this.url+"/"+memberId).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError),

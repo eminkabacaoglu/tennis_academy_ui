@@ -9,8 +9,9 @@ import { MembersComponent } from './members/members.component';
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { MemberCreateComponent } from './members/member-create/member-create.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,16 @@ import { DataTablesModule } from 'angular-datatables';
     SidebarComponent,
     MembersComponent,
     MemberDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    MemberCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
