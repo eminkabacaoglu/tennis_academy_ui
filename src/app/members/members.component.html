@@ -37,13 +37,13 @@
                   <a routerLink="/members/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <div class="form-check mx-3">
-                    <input type="checkbox" [(ngModel)]="displayPassives" class="form-check-input" name="" id="displayPassives">
+                    <input type="checkbox" [(ngModel)]="displayPassives" class="form-check-input"  id="displayPassives">
                     <label for="displayPassives" class="form-check-label">Pasif Üyeler</label>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <!-- <table datatable id="datatable1" class="table table-bordered table-striped"> -->
-                  <table datatable id="datatable1" class="table table-bordered">
+                  <table datatable [dtOptions]="dtOption" [dtTrigger]="dtTrigger" id="datatable1" class="table table-bordered">
                     <thead>
                     <tr>
                       <th>Id</th>

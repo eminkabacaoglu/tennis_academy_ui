@@ -11,6 +11,12 @@ export class MemberService{
     constructor(private http:HttpClient){}
 
     getMembers():Observable<Member[]>{
+        // if(!isActive){
+        //     this.url+="/passive"
+        // }
+        // else{
+        //     this.url+="/active"
+        // }
 
         return this.http.get<Member[]>(this.url).pipe(
             map(response=>{
@@ -30,6 +36,7 @@ export class MemberService{
     }
 
     createMember(member:Member):Observable<Member>{
+    
         const httpOptions= {
             headers: new HttpHeaders({
                 'Content-Type':'application/json',

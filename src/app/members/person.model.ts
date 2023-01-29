@@ -1,4 +1,4 @@
-export interface Member{
+export interface Person{
     id?:number;
     firstName:string;
     lastName:string;
@@ -20,13 +20,5 @@ export interface Member{
     modifiedBy:string;
     webReservation:boolean;
     active:boolean;
-    job:string
-    fatherName:string
-    motherName:string
-    dateOfMembershipBegin:Date
-    dateOfMembershipEnd:Date
-    membershipStatus:string
-    memberType:string
-    note:string
 
 }

@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { MemberCreateComponent } from './members/member-create/member-create.component';
+import { NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,12 @@ import { MemberCreateComponent } from './members/member-create/member-create.com
     HttpClientModule,
     FormsModule,
     DataTablesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    NgbDatepickerModule,
+
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,16 +25,18 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css"
             ],
             "scripts": [
-              "src/assets/plugins/jquery/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "src/assets/plugins/bootstrap/js/bootstrap.bundle.min.js",
               "node_modules/alertifyjs/build/alertify.min.js",
               "src/assets/plugins/jquery-ui/jquery-ui.min.js",
+              "src/assets/plugins/select2/js/select2.full.min.js",
               "src/assets/plugins/sparklines/sparkline.js",
               "src/assets/plugins/chart.js/Chart.min.js",
               "src/assets/plugins/jquery-knob/jquery.knob.min.js",
@@ -48,8 +50,6 @@
               "src/assets/plugins/pdfmake/pdfmake.min.js",
               "src/assets/plugins/pdfmake/vfs_fonts.js",
               "src/assets/dist/js/adminlte.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.min.js",
               "node_modules/jszip/dist/jszip.js",
               "node_modules/datatables.net-buttons/js/dataTables.buttons.min.js",
@@ -57,9 +57,14 @@
               "node_modules/datatables.net-buttons/js/buttons.colVis.min.js",
               "node_modules/datatables.net-buttons/js/buttons.flash.min.js",
               "node_modules/datatables.net-buttons/js/buttons.html5.min.js",
-              "node_modules/datatables.net-buttons/js/buttons.print.min.js"
-              
-              
+              "node_modules/datatables.net-buttons/js/buttons.print.min.js",
+              "src/assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js",
+              "src/assets/plugins/moment/moment.min.js",
+              "src/assets/plugins/inputmask/jquery.inputmask.min.js",
+              "src/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js",
+              "src/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"
+
+                          
             ]
           },
           "configurations": {
