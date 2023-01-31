@@ -15,9 +15,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MemberCreateComponent implements OnInit{
   
   
-  modelBirthDate: NgbDateStruct| undefined;
-  modelMembershipBegins: NgbDateStruct| undefined;
-  modelMembershipEnds: NgbDateStruct| undefined;
+  dateOfBirth: NgbDateStruct| undefined;
+  dateOfMembershipBegin: NgbDateStruct| undefined;
+  dateOfMembershipEnd: NgbDateStruct| undefined;
   webRezervation:boolean=true;
 	today = this.calendar.getToday();
   myData: any;
@@ -42,13 +42,12 @@ export class MemberCreateComponent implements OnInit{
       firstName:this.memberForm.value.firstName,
       lastName:this.memberForm.value.lastName,
       job:this.memberForm.value.job,
-      webRezervation:this.webRezervation
     }
 
     // this.movieService.createMovie(movie).subscribe();
     this.memberService.createMember(member).subscribe(data=>{
         // this.router.navigate(["/movies"])
-        this.router.navigate(["/members"])
+        this.router.navigate(["/members"+"/"+data.id])
       });
   }
 }

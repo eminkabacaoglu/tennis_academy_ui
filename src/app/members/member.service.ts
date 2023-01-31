@@ -31,7 +31,7 @@ export class MemberService{
         return this.http.get<Member>(this.url+"/"+memberId).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError),
-            delay(500)
+            // delay(500)
             );
     }
 
@@ -49,11 +49,19 @@ export class MemberService{
             );
     }
 
-
+    updateMember(member:Member):Observable<Member>{
     
-
-
-
+        const httpOptions= {
+            headers: new HttpHeaders({
+                'Content-Type':'application/json',
+                'Autohorization':'Token'
+            }),
+        }
+        return this.http.put<Member>(this.url+"/"+member.id,member,httpOptions).pipe(
+            tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
+            catchError(this.handleError)
+            );
+    }
 
 
     private handleError(error:HttpErrorResponse){
@@ -77,6 +85,6 @@ export class MemberService{
                     
                 }
         }
-        return throwError("Bir Hata var");
+        return throwError("Bir Hata var: ");
     }
 }

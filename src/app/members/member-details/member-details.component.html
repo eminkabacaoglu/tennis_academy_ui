@@ -1,80 +1,262 @@
 <div class="content-wrapper">
     <section class="content-header">
     </section>
-    <ng-template [ngTemplateOutlet]="memberCreateForm"></ng-template>
+    <ng-template [ngTemplateOutlet]="memberEditForm"></ng-template>
 </div>
 
 
-<ng-template #memberCreateForm>
+<ng-template #memberEditForm>
     <section class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <h5>Yeni Üye</h5>
-                    <form>
+                    <div class="card">
+                        <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="exampleInputEmail1"
-                                        placeholder="Enter email"
-                                    />
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    id="exampleInputPassword1"
-                                    placeholder="Password"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">File input</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input
-                                            type="file"
-                                            class="custom-file-input"
-                                            id="exampleInputFile"
-                                        />
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            <h5>Üye Düzenle</h5>
+                            <form [formGroup]="memberForm" (ngSubmit)="updateMember()">
+                                <div class="row">
+                                    <!-- Left Block -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="firstName">Ad</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="firstName"
+                                                        name="firstName"
+                                                        formControlName="firstName"
+                                                        value="{{member.firstName}}"
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lastName">Soyad</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="lastName"
+                                                    name="lastName"
+                                                    formControlName="lastName"
+                                                    value="{{member.lastName}}"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nationalId">T.C.</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="nationalId"
+                                                    name="nationalId"
+                                                    value="{{member.nationalId}}"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="gender">Cinsiyet</label>
+                                                <select id="gender" name="gender" class="custom-select" style="width: 100%;">
+                                                    <option>Seçiniz</option>
+                                                    <option value="Female">Kadın</option>
+                                                    <option value="Male">Erkek</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dateOfBirth">Doğum Günü</label>
+                                                <div class="input-group date" data-target-input="nearest">
+                                                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                                                    <input
+                                                        class="form-control"
+                                                        placeholder="yyyy-mm-dd"
+                                                        name="dateOfBirth"
+                                                        [(ngModel)]="dateOfBirth"
+                                                        ngbDatepicker
+                                                        #d="ngbDatepicker"/>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
+                                    <!-- Middle Block -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="placeOfBirth">Doğum Yeri</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="placeOfBirth"
+                                                        name="placeOfBirth"
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mobil:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="mobile" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ev:</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                    </div>
+                                                    <input type="text" class="form-control" name="home" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    id="email"
+                                                    name="email"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="job">İş</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="job"
+                                                    name="job"
+                                                    formControlName="job"
+                                                    value="{{member.job}}"
+                                                    
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Middle 2 Block -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="fatherName">Baba Adı</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="fatherName"
+                                                    name="fatherName"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="motherName">Anne Adı</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="motherName"
+                                                    name="motherName"
+                                                />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="dateOfMembershipBegin">Üyelik Başlangıç</label>
+                                                <div class="input-group date" data-target-input="nearest">
+                                                    <button class="btn btn-outline-secondary" (click)="db.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                                                    <input
+                                                        class="form-control"
+                                                        placeholder="yyyy-mm-dd"
+                                                        name="dateOfMembershipBegin"
+                                                        id="dateOfMembershipBegin"
+                                                        [(ngModel)]="dateOfMembershipBegin"
+                                                        ngbDatepicker
+                                                        #db="ngbDatepicker"/>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="dateOfMembershipEnd">Üyelik Bitiş</label>
+                                                <div class="input-group date" data-target-input="nearest">
+                                                    <button class="btn btn-outline-secondary" (click)="de.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                                                    <input
+                                                        class="form-control"
+                                                        placeholder="yyyy-mm-dd"
+                                                        name="dateOfMembershipEnd"
+                                                        id="dateOfMembershipEnd"
+                                                        [(ngModel)]="dateOfMembershipEnd"
+                                                        ngbDatepicker
+                                                        #de="ngbDatepicker"/>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="membershipStatus">Üyelik Statüsü</label>
+                                                <select id="membershipStatus" name="membershipStatus" class="custom-select" style="width: 100%;">
+                                                    <option>Seçiniz</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Block -->
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="memberType">Üye Tipi</label>
+                                                <select id="memberType" name="memberType" class="custom-select" style="width: 100%;">
+                                                    <option>Seçiniz</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="city">İl</label>
+                                                <select id="city" name="city" class="custom-select" style="width: 100%;">
+                                                    <option>Seçiniz</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="county">İlçe</label>
+                                                <select id="county" name="county" class="custom-select" style="width: 100%;">
+                                                    <option>Seçiniz</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="note">Not</label>
+                                                <textarea class="form-control" rows="3" name="note" id="note" placeholder="Not..."></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <!-- active -->
+                                                        <div class="form-group clearfix">
+                                                            <div class="icheck-primary d-inline">
+                                                                <input type="checkbox" id="acitve" checked>
+                                                                <label for="acitve">Aktif</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                            <!-- web reservation -->
+                                                            <div class="form-group clearfix">
+                                                                <div class="icheck-primary d-inline">
+                                                                    <input type="checkbox" id="webReservation" checked>
+                                                                    <label for="webReservation">Web Rezervasyon</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>                                                    
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-check">
-                                <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                    id="exampleCheck1"
-                                />
-                                <label class="form-check-label" for="exampleCheck1">Aktif</label>
-                            </div>
+                                
+                                <div class="card-footer float-right">
+                                    <a href="" class="btn btn-secondary">İptal</a>
+                                    <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right">Kaydet</button>
-                        </div>
-                    </form>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
                 </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
             <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-      </section>
-</ng-template>
 
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
 
 

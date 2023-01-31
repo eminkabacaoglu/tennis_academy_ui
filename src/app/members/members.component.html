@@ -1,9 +1,10 @@
-<div class="alert alert-danger" *ngIf="apiError">
-    {{apiError}} 
-</div>
+
 
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <div class="alert alert-danger" *ngIf="apiError">
+      {{apiError}} 
+    </div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <!-- <div class="container-fluid">
@@ -20,9 +21,12 @@
         </div>
       </div>/.container-fluid -->
     </section>
+    <div *ngIf="getMembers().length === 0">
+      <ng-template [ngTemplateOutlet]="noMembers"></ng-template>
+    </div>
     <ng-template [ngTemplateOutlet]="membersList"></ng-template>
     <!-- Main content -->
-
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -57,13 +61,15 @@
                     <tbody>
                         <tr *ngFor="let member of getMembers(); let i = index"  [class]="{'bg-danger': !member.active}">
                           <td class="td-small">{{member.id}}</td>
-                          <td>{{member.firstName}}</td>
-                          <td>{{member.lastName}}</td>
+                          <td>{{member.firstName | titlecase}}</td>
+                          <td>{{member.lastName | titlecase}}</td>
+                          <!--isactive-->
                           <td class="td-small td-center" *ngIf="member.active"><i class="fas fa-check"></i></td>
                           <td class="td-small td-center" *ngIf="!member.active"><i class="fas fa-times"></i></td>
+                          <!--is web reservation-->
                           <td class="td-small td-center" *ngIf="member.webReservation"><i class="fas fa-check"></i></td>
                           <td class="td-small td-center" *ngIf="!member.webReservation"><i class="fas fa-times"></i></td>
-                          <td class="td-small"><button class="btn btn-warning"><i class="far fa-edit"></i></button></td>
+                          <td class="td-small"><a routerLink="/members/{{member.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -90,3 +96,8 @@
       </section>
 </ng-template>
   
+<ng-template #noMembers>
+  <div class="alert alert-warning" >
+      Üye Bulunamadı.
+  </div>
+</ng-template>
