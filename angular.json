@@ -34,6 +34,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/dist/js/adminlte.min.js",
               "node_modules/alertifyjs/build/alertify.min.js",
               "src/assets/plugins/jquery-ui/jquery-ui.min.js",
               "src/assets/plugins/select2/js/select2.full.min.js",
@@ -49,7 +50,6 @@
               "src/assets/plugins/jszip/jszip.min.js",
               "src/assets/plugins/pdfmake/pdfmake.min.js",
               "src/assets/plugins/pdfmake/vfs_fonts.js",
-              "src/assets/dist/js/adminlte.js",
               "node_modules/datatables.net/js/jquery.dataTables.min.js",
               "node_modules/jszip/dist/jszip.js",
               "node_modules/datatables.net-buttons/js/dataTables.buttons.min.js",

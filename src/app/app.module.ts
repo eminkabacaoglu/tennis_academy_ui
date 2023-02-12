@@ -15,6 +15,21 @@ import { MemberCreateComponent } from './members/member-create/member-create.com
 import { NgbDatepickerModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorInterceptor } from './shared/error.inteceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { LoadingComponent } from './shared/loading/loading.component';
+import { StudentsComponent } from './students/students.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { MemberTypesComponent } from './member-types/member-types.component';
+import { StudentTypesComponent } from './student-types/student-types.component';
+import { EmployeeTypesComponent } from './employee-types/employee-types.component';
+import { MemberTypesCreateComponent } from './member-types/member-types-create/member-types-create.component';
+import { MemberTypesDetailsComponent } from './member-types/member-types-details/member-types-details.component';
+import { MembershipStatusComponent } from './membership-status/membership-status.component';
+import { MembershipStatusCreateComponent } from './membership-status/membership-status-create/membership-status-create.component';
+import { MembershipStatusDetailComponent } from './membership-status/membership-status-detail/membership-status-detail.component';
+import { PaymentTypesComponent } from './payment-types/payment-types.component';
+import { PaymentTypesCreateComponent } from './payment-types/payment-types-create/payment-types-create.component';
+import { PaymentTypesDetailComponent } from './payment-types/payment-types-detail/payment-types-detail.component';
 
 
 @NgModule({
@@ -25,7 +40,23 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     MembersComponent,
     MemberDetailsComponent,
     FooterComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    ConfirmationDialogComponent,
+    LoadingComponent,
+    StudentsComponent,
+    EmployeesComponent,
+    MemberTypesComponent,
+    StudentTypesComponent,
+    EmployeeTypesComponent,
+    MemberTypesCreateComponent,
+    MemberTypesDetailsComponent,
+    MembershipStatusComponent,
+    MembershipStatusCreateComponent,
+    MembershipStatusDetailComponent,
+    PaymentTypesComponent,
+    PaymentTypesCreateComponent,
+    PaymentTypesDetailComponent,
+    
   ],
   imports: [
     BrowserModule,

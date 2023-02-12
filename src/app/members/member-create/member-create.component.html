@@ -22,8 +22,6 @@
                                                     <input
                                                         type="text"
                                                         class="form-control"
-                                                        id="firstName"
-                                                        name="firstName"
                                                         formControlName="firstName"
                                                     />
                                             </div>
@@ -44,6 +42,7 @@
                                                     class="form-control"
                                                     id="nationalId"
                                                     name="nationalId"
+                                                    formControlName="nationalId"
                                                 />
                                             </div>
                                             <div class="form-group">
@@ -63,6 +62,7 @@
                                                         placeholder="yyyy-mm-dd"
                                                         name="dateOfBirth"
                                                         [(ngModel)]="dateOfBirth"
+                                                        [ngModelOptions]="{standalone: true}"
                                                         ngbDatepicker
                                                         #d="ngbDatepicker"/>
                                                     
@@ -154,6 +154,7 @@
                                                         name="dateOfMembershipBegin"
                                                         id="dateOfMembershipBegin"
                                                         [(ngModel)]="dateOfMembershipBegin"
+                                                        [ngModelOptions]="{standalone: true}"
                                                         ngbDatepicker
                                                         #db="ngbDatepicker"/>
                                                     
@@ -170,6 +171,7 @@
                                                         name="dateOfMembershipEnd"
                                                         id="dateOfMembershipEnd"
                                                         [(ngModel)]="dateOfMembershipEnd"
+                                                        [ngModelOptions]="{standalone: true}"
                                                         ngbDatepicker
                                                         #de="ngbDatepicker"/>
                                                     
@@ -192,6 +194,7 @@
                                                 <label for="memberType">Üye Tipi</label>
                                                 <select id="memberType" name="memberType" class="custom-select" style="width: 100%;">
                                                     <option>Seçiniz</option>
+                                                    <option *ngFor="let item of memberTypes " [value]="item.id">{{item.description}}</option>
                                                 </select>
                                             </div>
 

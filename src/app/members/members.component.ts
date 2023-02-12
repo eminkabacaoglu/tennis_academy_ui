@@ -24,14 +24,13 @@ export class MembersComponent implements OnInit{
   constructor(private memberService:MemberService, private activatedRoute:ActivatedRoute){}
   
   ngOnInit(): void {
-    
     this.dtOption={
       pagingType:"full_numbers",
       search:true,
       lengthChange:true,
-      paging:true
+      paging:true,
+
     }
-  
     this.loadData();
 
   }

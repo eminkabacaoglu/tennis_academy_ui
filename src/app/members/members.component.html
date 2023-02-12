@@ -1,5 +1,5 @@
 
-
+<!-- <app-loading *ngIf="loading"></app-loading> -->
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="alert alert-danger" *ngIf="apiError">
@@ -21,9 +21,11 @@
         </div>
       </div>/.container-fluid -->
     </section>
-    <div *ngIf="getMembers().length === 0">
+
+    <!-- <div  *ngIf="members.length === 0">
       <ng-template [ngTemplateOutlet]="noMembers"></ng-template>
-    </div>
+    </div> -->
+    
     <ng-template [ngTemplateOutlet]="membersList"></ng-template>
     <!-- Main content -->
     
@@ -41,7 +43,7 @@
                   <a routerLink="/members/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <div class="form-check mx-3">
-                    <input type="checkbox" [(ngModel)]="displayPassives" class="form-check-input"  id="displayPassives">
+                    <input type="checkbox"  [(ngModel)]="displayPassives" class="form-check-input"  id="displayPassives">
                     <label for="displayPassives" class="form-check-label">Pasif Üyeler</label>
                 </div>
                 <!-- /.card-header -->

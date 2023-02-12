@@ -22,9 +22,9 @@ export class MemberService{
             map(response=>{
                 return response
             }),
+            // delay(250), 
             catchError(this.handleError)
-            ); 
-        
+            );
     }
 
     getMemberById(memberId:number):Observable<Member>{
@@ -49,7 +49,7 @@ export class MemberService{
             );
     }
 
-    updateMember(member:Member):Observable<Member>{
+    updateMember(id:number,member:Member):Observable<Member>{
     
         const httpOptions= {
             headers: new HttpHeaders({
@@ -57,10 +57,21 @@ export class MemberService{
                 'Autohorization':'Token'
             }),
         }
-        return this.http.put<Member>(this.url+"/"+member.id,member,httpOptions).pipe(
-            tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
+
+        return this.http.put<Member>(this.url+"/"+id,member,httpOptions).pipe(
+            tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)),
+            catchError(this.handleError),
+            );
+            
+    }
+
+    deleteMember(id:number):Observable<boolean>{
+    
+        return this.http.delete<boolean>(this.url+"/"+id).pipe(
+            tap(data=>console.log("Sonuç: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError)
             );
+            
     }
 
 
