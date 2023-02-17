@@ -32,7 +32,6 @@ export class MembersComponent implements OnInit{
 
     }
     this.loadData();
-
   }
 
   loadData(){

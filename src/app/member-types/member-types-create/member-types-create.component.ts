@@ -1,7 +1,8 @@
+import { MemberType } from './../member-type.model';
 import { PaymentType } from './../../payment-types/payment-type.model';
 import { PaymentTypeService } from './../../payment-types/payment-type.service';
 import { AlertifyService } from './../../shared/alertify.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MemberTypeService } from './../member-type.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,8 +18,11 @@ export class MemberTypesCreateComponent implements OnInit{
   
 
   myData: any;
-  memberType:any;
+  memberType:MemberType;
   paymentTypes:PaymentType[];
+  payment:PaymentType;
+
+  
 
   constructor(private memberTypeService:MemberTypeService,private router:Router,private alertify:AlertifyService,private paymentTypeService:PaymentTypeService){}
 
@@ -32,19 +36,30 @@ export class MemberTypesCreateComponent implements OnInit{
   }
 
   memberTypeForm = new FormGroup({
-    typeCode : new FormControl("",[Validators.required, Validators.minLength(3)]),
+    typeCode : new FormControl("",[Validators.required, Validators.minLength(1)]),
     description : new FormControl("",[Validators.required, Validators.minLength(3)]),
     
-    // paymentType: new FormControl("",[Validators.required]),
+    selecetPaymentType: new UntypedFormControl("",[Validators.required]),
   })
 
   createMemberType(){
 
 
     if(this.memberTypeForm.valid){
-      this.memberType=Object.assign({},this.memberTypeForm.value)
-    }
+      this.memberType=<MemberType>Object.assign({},this.memberTypeForm.value)
+      this.paymentTypeService.getPaymentTypeById(this.memberTypeForm.value.selecetPaymentType)
+        .subscribe(data=>{
+          this.payment= data
+          this.memberType.paymentType=data
+          this.memberTypeService.createMemberType(this.memberType).subscribe(data=>{
+            this.alertify.success("Kaydedildi")
+            this.router.navigate(["/member-types"+"/"+data.id])
 
+          });
+        })
+        
+    }
+    
     this.memberTypeService.createMemberType(this.memberType).subscribe(data=>{
         this.alertify.success("Kaydedildi")
         this.router.navigate(["/member-types"+"/"+data.id])

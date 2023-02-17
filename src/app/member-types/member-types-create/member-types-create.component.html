@@ -36,10 +36,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="paymentType">Ücret Tipi</label>
-                                                <select id="paymentType" name="paymentType" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
-                                                    <option *ngFor="let item of paymentTypes " [value]="item.id">{{item.description}}</option>
+                                                <select id="paymentType" formControlName="selecetPaymentType" name="paymentType" class="custom-select" style="width: 100%;">
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of paymentTypes " [ngValue]="item.id">{{item.description}}</option>
                                                 </select>
+                                                
                                             </div>
                                         </div>
                                         <div class="card-footer float-right">

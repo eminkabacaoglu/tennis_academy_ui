@@ -21,8 +21,8 @@ export class PaymentTypeService {
             );
     }
 
-    getPaymentTypeById(typeId:number):Observable<PaymentType>{
-        return this.http.get<PaymentType>(this.url+"/"+typeId).pipe(
+    getPaymentTypeById(paymentTypeId:number):Observable<PaymentType>{
+        return this.http.get<PaymentType>(this.url+"/"+paymentTypeId).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError),
             // delay(500)

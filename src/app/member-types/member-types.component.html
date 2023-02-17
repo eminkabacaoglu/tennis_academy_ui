@@ -60,7 +60,7 @@
                           <td class="td-small">{{memberType.id}}</td>
                           <td>{{memberType.typeCode | titlecase}}</td>
                           <td>{{memberType.description | titlecase}}</td>
-                          <td>{{memberType.paymentType | titlecase}}</td>
+                          <td>{{memberType.paymentType.description | titlecase}}</td>
                           <td class="td-small"><a routerLink="/member-types/{{memberType.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>

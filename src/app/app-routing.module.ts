@@ -25,8 +25,9 @@ const routes: Routes = [
   {path: 'membership-status/create',component:MembershipStatusCreateComponent},
   {path: 'membership-status/:statusId',component:MembershipStatusDetailComponent},
   {path: 'payment-types',component:PaymentTypesComponent},
-  {path: 'payment-types/:paymentTypeId',component:PaymentTypesDetailComponent},
   {path: 'payment-types/create',component:PaymentTypesCreateComponent},
+  {path: 'payment-types/:paymentTypeId',component:PaymentTypesDetailComponent},
+  
 ];
 
 @NgModule({

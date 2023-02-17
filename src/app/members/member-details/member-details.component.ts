@@ -68,8 +68,8 @@ export class MemberDetailsComponent implements OnInit{
       this.memberUpdated=Object.assign({},this.memberForm.value)
     }
 
-    console.log(this.member.id)
-    this.memberService.updateMember(this.member.id,this.memberUpdated).subscribe(data=>{
+      console.log(this.member.id)
+      this.memberService.updateMember(this.member.id,this.memberUpdated).subscribe(data=>{
       // window.location.reload();
       this.alertify.success("Güncellendi")
       this.router.navigate(["/members"+"/"+this.member.id])
