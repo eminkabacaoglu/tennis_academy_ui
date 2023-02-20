@@ -1,8 +1,11 @@
+import { PaymentTypeService } from './../../payment-types/payment-type.service';
+import { MembershipStatusService } from './../../membership-status/membership-status.service';
+import { MembershipStatus } from './../../membership-status/membership-status.model';
 import { MemberType } from './../../member-types/member-type.model';
 import { MemberTypeService } from './../../member-types/member-type.service';
 import { AlertifyService } from 'src/app/shared/alertify.service';
 import { Member } from './../member.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { MemberService } from '../member.service';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +16,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   selector: 'app-member-create',
   templateUrl: './member-create.component.html',
   styleUrls: ['./member-create.component.css'],
-  providers:[MemberService,MemberTypeService],
+  providers:[MemberService,MemberTypeService,MembershipStatusService],
 })
 export class MemberCreateComponent implements OnInit{
   
@@ -26,23 +29,31 @@ export class MemberCreateComponent implements OnInit{
   myData: any;
   member:any;
   memberTypes:MemberType[];
-
-  constructor(private memberService:MemberService,private memberTypeService:MemberTypeService,private router:Router,private calendar: NgbCalendar, private alertify:AlertifyService){}
-
-
+  membershipStatuses:MembershipStatus[];
   
+
+  constructor(private memberService:MemberService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private router:Router,private calendar: NgbCalendar, private alertify:AlertifyService){
+    this.ngOnInit()
+  }
+
+
   ngOnInit(): void {
      this.memberTypeService.getMemberTypes().subscribe(data=>{
         this.memberTypes =data;
      })
+     this.membershipStatusService.getMembershipStatuses().subscribe(data=>{
+      this.membershipStatuses =data;
+   })
+   
   }
 
   memberForm = new FormGroup({
     firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
     lastName : new FormControl("",[Validators.required, Validators.minLength(3)]),
-    
+
     nationalId: new FormControl("",[Validators.required]),
     job : new FormControl("",[Validators.required]),
+    placeOfBirth : new FormControl("",),
     // job : new FormControl("",[Validators.required,ImageValidator.isValidExtension]),
   })
   createMember(){

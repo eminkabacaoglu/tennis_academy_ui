@@ -1,24 +1,22 @@
-import { HttpClient,HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+import { MembershipStatus } from './membership-status.model';
+import { throwError, map } from 'rxjs';
+import { catchError } from 'rxjs';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, map, Observable, tap, throwError } from 'rxjs';
-import { Member } from './member.model';
+
 
 @Injectable()
-export class MemberService{
-    
-    url = "http://localhost:8080/members";
+export class MembershipStatusService {
 
-    constructor(private http:HttpClient){}
+    url = "http://localhost:8080/membershipstatuses";
 
-    getMembers():Observable<Member[]>{
-        // if(!isActive){
-        //     this.url+="/passive"
-        // }
-        // else{
-        //     this.url+="/active"
-        // }
+    constructor(private http:HttpClient) { }
 
-        return this.http.get<Member[]>(this.url).pipe(
+    getMembershipStatuses():Observable<MembershipStatus[]>{
+
+        return this.http.get<MembershipStatus[]>(this.url).pipe(
             map(response=>{
                 return response
             }),
@@ -27,50 +25,30 @@ export class MemberService{
             );
     }
 
-    getMemberById(memberId:number):Observable<Member>{
-        return this.http.get<Member>(this.url+"/"+memberId).pipe(
+    getMembershipStatusById(statusId:number):Observable<MembershipStatus>{
+        return this.http.get<MembershipStatus>(this.url+"/"+statusId).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError),
             // delay(500)
             );
     }
 
-    getActiveMembers():Observable<Member[]>{
-        return this.http.get<Member[]>(this.url+"/active").pipe(
-            map(response=>{
-                return response
-            }),
-            // delay(250), 
-            catchError(this.handleError)
-            );
-    }
+    createMembershipStatus(membershipStatus:MembershipStatus):Observable<MembershipStatus>{
 
-    getPassiveMembers():Observable<Member[]>{
-        return this.http.get<Member[]>(this.url+"/passive").pipe(
-            map(response=>{
-                return response
-            }),
-            // delay(250), 
-            catchError(this.handleError)
-            );
-    }
-
-    createMember(member:Member):Observable<Member>{
-    
         const httpOptions= {
             headers: new HttpHeaders({
                 'Content-Type':'application/json',
                 'Autohorization':'Token'
             }),
         }
-        return this.http.post<Member>(this.url,member,httpOptions).pipe(
+        return this.http.post<MembershipStatus>(this.url,membershipStatus,httpOptions).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError)
             );
     }
 
-    updateMember(id:number,member:Member):Observable<Member>{
-    
+    updateMembershipStatus(id:number,membershipStatus:MembershipStatus):Observable<MembershipStatus>{
+
         const httpOptions= {
             headers: new HttpHeaders({
                 'Content-Type':'application/json',
@@ -78,20 +56,20 @@ export class MemberService{
             }),
         }
 
-        return this.http.put<Member>(this.url+"/"+id,member,httpOptions).pipe(
+        return this.http.put<MembershipStatus>(this.url+"/"+id,membershipStatus,httpOptions).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)),
             catchError(this.handleError),
             );
-            
+
     }
 
-    deleteMember(id:number):Observable<boolean>{
-    
+    deleteMembershipStatus(id:number):Observable<boolean>{
+
         return this.http.delete<boolean>(this.url+"/"+id).pipe(
             tap(data=>console.log("Sonuç: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError)
             );
-            
+
     }
 
 
@@ -113,7 +91,7 @@ export class MemberService{
                     break;
                 default:
                     console.log("bilinmeyen hata");
-                    
+
                 }
         }
         return throwError("Bir Hata var: ");

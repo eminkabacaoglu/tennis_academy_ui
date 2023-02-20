@@ -43,13 +43,13 @@
                   <a routerLink="/members/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <div class="form-check mx-3">
-                    <input type="checkbox"  [(ngModel)]="displayPassives" class="form-check-input"  id="displayPassives">
+                    <input type="checkbox" (change)="activeOrPassive()"  [(ngModel)]="displayPassives" class="form-check-input"  id="displayPassives">
                     <label for="displayPassives" class="form-check-label">Pasif Üyeler</label>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <!-- <table datatable id="datatable1" class="table table-bordered table-striped"> -->
-                  <table datatable [dtOptions]="dtOption" [dtTrigger]="dtTrigger" id="datatable1" class="table table-bordered">
+                  <table datatable [dtOptions]="dtOption" [dtTrigger]="dtTrigger" id="memberTable" class="table table-bordered">
                     <thead>
                     <tr>
                       <th>Id</th>
@@ -61,7 +61,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let member of getMembers(); let i = index"  [class]="{'bg-danger': !member.active}">
+                        <tr *ngFor="let member of members; let i = index"  [class]="{'bg-danger': !member.active}">
                           <td class="td-small">{{member.id}}</td>
                           <td>{{member.firstName | titlecase}}</td>
                           <td>{{member.lastName | titlecase}}</td>

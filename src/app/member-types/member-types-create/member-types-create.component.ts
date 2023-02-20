@@ -15,8 +15,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberTypesCreateComponent implements OnInit{
   
-  
-
   myData: any;
   memberType:MemberType;
   paymentTypes:PaymentType[];

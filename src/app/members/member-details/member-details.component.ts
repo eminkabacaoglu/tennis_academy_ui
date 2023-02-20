@@ -32,7 +32,8 @@ export class MemberDetailsComponent implements OnInit{
       job : new FormControl([Validators.required]),
       username : new FormControl([Validators.required]),
       password : new FormControl([Validators.required]),
-      nationalId : new FormControl()
+      nationalId : new FormControl(),
+      placeOfBirth : new FormControl()
     })
   }
 
@@ -52,6 +53,7 @@ export class MemberDetailsComponent implements OnInit{
           username:this.member.username,
           password:this.member.password,
           nationalId:this.member.nationalId,
+          placeOfBirth:this.member.placeOfBirth,
         })
       
       })

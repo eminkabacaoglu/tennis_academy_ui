@@ -11,7 +11,14 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <h5>Yeni Üye</h5>
+                            <div class="row">
+                                <div class="col">
+                                    <h5>Yeni Üye</h5>
+                                </div>
+                                <div class="col">
+                                    <a routerLink="/members" class="btn btn-sm btn-warning float-right mr-3"><i class="fa fa-list"></i></a>
+                                </div>
+                            </div>
                             <form [formGroup]="memberForm" (ngSubmit)="createMember()">
                                 <div class="row">
                                     <!-- Left Block -->
@@ -47,7 +54,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="gender">Cinsiyet</label>
-                                                <select id="gender" name="gender" class="custom-select" style="width: 100%;">
+                                                <select formControlName="gender" id="gender" name="gender" class="custom-select" style="width: 100%;">
                                                     <option>Seçiniz</option>
                                                     <option value="Female">Kadın</option>
                                                     <option value="Male">Erkek</option>
@@ -74,12 +81,13 @@
                                     <div class="col-md-3 col-sm-6">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Doğum Yeri</label>
+                                                <label for="placeOfBirth">Doğum Yeri</label>
                                                     <input
                                                         type="text"
                                                         class="form-control"
                                                         id="placeOfBirth"
                                                         name="placeOfBirth"
+                                                        formControlName="placeOfBirth"
                                                     />
                                             </div>
                                             <div class="form-group">
@@ -88,7 +96,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="mobile" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
+                                                    <input type="text" class="form-control" formControlName="mobile" name="mobile" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -97,7 +105,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="home" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
+                                                    <input type="text" class="form-control" name="home" formControlName="home" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -107,6 +115,7 @@
                                                     class="form-control"
                                                     id="email"
                                                     name="email"
+                                                    formControlName="email"
                                                 />
                                             </div>
                                             <div class="form-group">
@@ -126,21 +135,23 @@
                                     <div class="col-md-3 col-sm-6">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="fatherName">Anne Adı</label>
+                                                <label for="fatherName">Baba Adı</label>
                                                 <input
                                                     type="text"
                                                     class="form-control"
                                                     id="fatherName"
                                                     name="fatherName"
+                                                    formControlName="fatherName"
                                                 />
                                             </div>
                                             <div class="form-group">
-                                                <label for="motherName">Baba Adı</label>
+                                                <label for="motherName">Anne Adı</label>
                                                 <input
                                                     type="text"
                                                     class="form-control"
                                                     id="motherName"
                                                     name="motherName"
+                                                    formControlName="motherName"
                                                 />
                                             </div>
 
@@ -180,8 +191,9 @@
 
                                             <div class="form-group">
                                                 <label for="membershipStatus">Üyelik Statüsü</label>
-                                                <select id="membershipStatus" name="membershipStatus" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
+                                                <select id="membershipStatus" formControlName="membershipStatus" name="membershipStatus" class="custom-select" style="width: 100%;">
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of membershipStatuses " [ngValue]="item.id">{{item.statusName}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -192,29 +204,29 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="memberType">Üye Tipi</label>
-                                                <select id="memberType" name="memberType" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
-                                                    <option *ngFor="let item of memberTypes " [value]="item.id">{{item.description}}</option>
+                                                <select id="memberType" formControlName="memberType" name="memberType" class="custom-select" style="width: 100%;">
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of memberTypes " [ngValue]="item.id">{{item.description}}</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="city">İl</label>
-                                                <select id="city" name="city" class="custom-select" style="width: 100%;">
+                                                <select id="city" formControlName="city" name="city" class="custom-select" style="width: 100%;">
                                                     <option>Seçiniz</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="county">İlçe</label>
-                                                <select id="county" name="county" class="custom-select" style="width: 100%;">
+                                                <select id="county" formControlName="county" name="county" class="custom-select" style="width: 100%;">
                                                     <option>Seçiniz</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="note">Not</label>
-                                                <textarea class="form-control" rows="3" name="note" id="note" placeholder="Not..."></textarea>
+                                                <textarea class="form-control" formControlName="note" rows="3" name="note" id="note" placeholder="Not..."></textarea>
                                             </div>
 
 
