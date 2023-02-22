@@ -51,9 +51,9 @@ export class MemberCreateComponent implements OnInit{
     firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
     lastName : new FormControl("",[Validators.required, Validators.minLength(3)]),
 
-    nationalId: new FormControl("",[Validators.required]),
-    job : new FormControl("",[Validators.required]),
-    placeOfBirth : new FormControl("",),
+    nationalId: new FormControl(""),
+    job : new FormControl(""),
+    placeOfBirth : new FormControl(""),
     // job : new FormControl("",[Validators.required,ImageValidator.isValidExtension]),
   })
   createMember(){

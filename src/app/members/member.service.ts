@@ -77,7 +77,9 @@ export class MemberService{
                 'Autohorization':'Token'
             }),
         }
-
+        // member= JSON.parse(JSON.stringify(member));
+        // 
+        console.log(member)
         return this.http.put<Member>(this.url+"/"+id,member,httpOptions).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)),
             catchError(this.handleError),

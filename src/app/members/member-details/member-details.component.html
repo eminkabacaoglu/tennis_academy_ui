@@ -28,6 +28,7 @@
                                                         id="firstName"
                                                         name="firstName"
                                                         formControlName="firstName"
+                                                        
                                                     />
                                             </div>
                                             <div class="form-group">
@@ -37,7 +38,8 @@
                                                     class="form-control"
                                                     id="lastName"
                                                     name="lastName"
-                                                    formControlName="lastName"  
+                                                    formControlName="lastName"
+                                                    
                                                 />
                                             </div>
                                             <div class="form-group">
@@ -160,6 +162,7 @@
                                                     class="form-control"
                                                     id="fatherName"
                                                     name="fatherName"
+                                                    formControlName="fatherName"
                                                 />
                                             </div>
                                             <div class="form-group">
@@ -169,6 +172,7 @@
                                                     class="form-control"
                                                     id="motherName"
                                                     name="motherName"
+                                                    formControlName="motherName"
                                                 />
                                             </div>
 
@@ -179,14 +183,16 @@
                                                     <input
                                                         class="form-control"
                                                         placeholder="yyyy-mm-dd"
+                                                        placement="bottom"
                                                         name="dateOfMembershipBegin"
                                                         id="dateOfMembershipBegin"
-                                                        [(ngModel)]="dateOfMembershipBegin"
-                                                        [ngModelOptions]="{standalone: true}"
+                                                        formControlName="dateOfMembershipBegin"
+                                                        [value]="memberForm.get('dateOfMembershipBegin').value | date : 'yyyy-MM-dd'"
                                                         ngbDatepicker
                                                         #db="ngbDatepicker"/>
                                                     
                                                 </div>
+                                                
                                             </div>
 
                                             <div class="form-group">
@@ -208,8 +214,9 @@
 
                                             <div class="form-group">
                                                 <label for="membershipStatus">Üyelik Statüsü</label>
-                                                <select id="membershipStatus" name="membershipStatus" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
+                                                <select id="membershipStatus" [compareWith]="membershipStatus" formControlName="membershipStatus" name="membershipStatus" class="custom-select" style="width: 100%;">
+                                                    <option value="" >Seçiniz</option>
+                                                    <option *ngFor="let item of membershipStatuses " [ngValue]="item">{{item.statusName}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -220,8 +227,9 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="memberType">Üye Tipi</label>
-                                                <select id="memberType" name="memberType" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
+                                                <select id="memberType" [compareWith]="memberType" formControlName="memberType" name="memberType" class="custom-select" style="width: 100%;">
+                                                    <option value="" >Seçiniz</option>
+                                                    <option *ngFor="let item of memberTypes " [ngValue]="item">{{item.description}}</option>
                                                 </select>
                                             </div>
 
@@ -240,7 +248,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="note">Not</label>
-                                                <textarea class="form-control" rows="3" name="note" id="note" placeholder="Not..."></textarea>
+                                                <textarea class="form-control" formControlName="note" rows="3" name="note" id="note" placeholder="Not..."></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <div class="row">
@@ -248,7 +256,7 @@
                                                         <!-- active -->
                                                         <div class="form-group clearfix">
                                                             <div class="icheck-primary d-inline">
-                                                                <input type="checkbox" id="acitve" checked>
+                                                                <input type="checkbox" formControlName="active" id="acitve" checked>
                                                                 <label for="acitve">Aktif</label>
                                                             </div>
                                                         </div>
@@ -257,21 +265,25 @@
                                                             <!-- web reservation -->
                                                             <div class="form-group clearfix">
                                                                 <div class="icheck-primary d-inline">
-                                                                    <input type="checkbox" id="webReservation" checked>
+                                                                    <input type="checkbox" formControlName="webReservation" id="webReservation" checked>
                                                                     <label for="webReservation">Web Rezervasyon</label>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                </div>                                                    
+                                                        
+                                                </div> 
+                                                
+                                                
+                                            </div>
+                                            <div class="card-footer float-right px-0">
+                                                    <button (click)="deleteMember()" class="btn btn-danger">Sil</button>
+                                                    <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="card-footer float-right">
-                                    <button (click)="deleteMember()" class="btn btn-danger ml-3">Sil</button>
-                                    <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
-                                </div>
+                                
                             </form>
                         </div>
                         <!-- /.card-body -->
