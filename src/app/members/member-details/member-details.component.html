@@ -204,8 +204,8 @@
                                                         placeholder="yyyy-mm-dd"
                                                         name="dateOfMembershipEnd"
                                                         id="dateOfMembershipEnd"
-                                                        [(ngModel)]="dateOfMembershipEnd"
-                                                        [ngModelOptions]="{standalone: true}"
+                                                        formControlName="dateOfMembershipEnd"
+                                                        [value]="memberForm.get('dateOfMembershipEnd').value | date : 'yyyy-MM-dd'"
                                                         ngbDatepicker
                                                         #de="ngbDatepicker"/>
                                                     

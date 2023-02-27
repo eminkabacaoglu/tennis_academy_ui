@@ -1,4 +1,3 @@
-import { th } from 'date-fns/locale';
 import { MemberType } from './../../member-types/member-type.model';
 import { MembershipStatusService } from './../../membership-status/membership-status.service';
 import { MembershipStatus } from './../../membership-status/membership-status.model';
@@ -25,8 +24,7 @@ export class MemberDetailsComponent implements OnInit{
   memberForm:FormGroup;
   dateOfBirth: NgbDateStruct| undefined;
   dateOfMembershipBegin: Date| undefined;
-  // dateOfMembershipBegin: NgbDateStruct| undefined={ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
-  dateOfMembershipEnd: NgbDateStruct| undefined;
+  dateOfMembershipEnd: Date| undefined;
 	today = this.calendar.getToday();
   myData: any;
   memberTypes:MemberType[];
@@ -48,6 +46,7 @@ export class MemberDetailsComponent implements OnInit{
       active:new FormControl(),
       webReservation:new FormControl(),
       dateOfMembershipBegin:new FormControl(),
+      dateOfMembershipEnd:new FormControl(),
     })
 
     
@@ -86,13 +85,15 @@ export class MemberDetailsComponent implements OnInit{
           active:this.member.active,
           webReservation:this.member.webReservation,
           dateOfMembershipBegin:new Date(this.member.dateOfMembershipBegin),
+          dateOfMembershipEnd:new Date(this.member.dateOfMembershipEnd),
           
         
         })
-        // this.memberForm.controls["dateOfMembershipBegin"].setValue({ year: this.member.dateOfMembershipBegin.getFullYear(), month: (this.member.dateOfMembershipBegin.getMonth()+1), day: this.member.dateOfMembershipBegin.getDay() })
+        
         this.memberForm.controls["dateOfMembershipBegin"].setValue(this.setNg(new Date(this.member.dateOfMembershipBegin)))
-        console.log(this.memberForm.value.dateOfMembershipBegin)
-        console.log(this.member.dateOfMembershipBegin)
+        this.memberForm.controls["dateOfMembershipEnd"].setValue(this.setNg(new Date(this.member.dateOfMembershipEnd)))
+        // console.log(this.memberForm.value.dateOfMembershipBegin)
+        // console.log(this.member.dateOfMembershipBegin)
     
       })
       
@@ -120,52 +121,34 @@ export class MemberDetailsComponent implements OnInit{
 
   setDate(date:NgbDateStruct){
   
-    // const year = this.memberForm.value.dateOfMembershipBegin.year;
-    // const month:string = this.memberForm.value.dateOfMembershipBegin.month.toString().padStart(2, '0');
-    // const day:string = this.memberForm.value.dateOfMembershipBegin.day.toString().padStart(2, '0');
-
-    // this.formatteStringdDate = `${year}-${month}-${day}`;
-    // this.dateOfMembershipBegin=new Date(this.formatteStringdDate);
-    // console.log(this.formatteStringdDate)
-
-    console.log(this.memberForm.value.dateOfMembershipBegin)
-    const dt =this.memberForm.value.dateOfMembershipBegin 
+    console.log(date)
+    const dt =date 
     const jsDate = new Date(dt.year, dt.month-1, dt.day+1);
-    // this.memberForm.value.dateOfMembershipBegin=jsDate
-    // this.dateOfMembershipBegin=jsDate
-    console.log("trr:"+jsDate) 
     return jsDate
   }
 
-  // setDateAsString(date:Date){
-  
-  //   const year = date.getFullYear();
-  //   const month:string = (date.getMonth()+1).toString().padStart(2, '0');
-  //   const day:string = date.getDay().toString().padStart(2, '0');
-
-  //   this.formatteStringdDate = `${year}-${month}-${day}`;
-  //   return this.formatteStringdDate
-  // }
 
   updateMember(){
     
     console.log(this.memberForm.valid)
 
     console.log(this.memberForm.get("dateOfMembershipBegin"))
+    console.log(this.memberForm.get("dateOfMembershipEnd"))
     
     if(this.memberForm.valid){
       console.log("asdasd")
       console.log(this.memberForm.value.dateOfMembershipBegin)
+      console.log(this.memberForm.value.dateOfMembershipEnd)
       this.memberUpdated=Object.assign({},this.memberForm.value)
       this.memberUpdated.dateOfMembershipBegin=this.setDate(this.memberForm.value.dateOfMembershipBegin)
+      this.memberUpdated.dateOfMembershipEnd=this.setDate(this.memberForm.value.dateOfMembershipEnd)
     }
-    //this.memberUpdated=Object.assign({},this.memberForm.value)
+
     console.log("getttttt: "+this.memberForm.value.dateOfMembershipBegin)
     console.log("getttttt2: "+ this.memberForm.value.firstName)
 
 
-      console.log(this.memberUpdated.dateOfMembershipBegin); // Output: e.g. 2023-02-21
-      // this.memberUpdated.dateOfMembershipBegin=this.setDateAsString(this.memberForm.value.dateOfMembershipBegin)
+      console.log(this.memberUpdated.dateOfMembershipBegin); 
       
       this.memberService.updateMember(this.member.id,this.memberUpdated).subscribe(data=>{
       // window.location.reload();

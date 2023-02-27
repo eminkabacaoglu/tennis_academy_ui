@@ -4,7 +4,7 @@ export interface Member extends Person{
     fatherName:string
     motherName:string
     dateOfMembershipBegin:Date
-    dateOfMembershipEnd:string
+    dateOfMembershipEnd:Date
     membershipStatus:string
     memberType:string
     note:string
