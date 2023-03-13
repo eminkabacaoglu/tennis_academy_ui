@@ -1,3 +1,4 @@
+import { StudentTypesComponent } from './student-types/student-types.component';
 import { PaymentTypesCreateComponent } from './payment-types/payment-types-create/payment-types-create.component';
 import { PaymentTypesDetailComponent } from './payment-types/payment-types-detail/payment-types-detail.component';
 import { PaymentTypesComponent } from './payment-types/payment-types.component';
@@ -12,6 +13,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MemberTypesDetailsComponent } from './member-types/member-types-details/member-types-details.component';
 import { MemberTypesCreateComponent } from './member-types/member-types-create/member-types-create.component';
+import { StudentTypeCreateComponent } from './student-types/student-type-create/student-type-create.component';
+import { StudentTypeDetailsComponent } from './student-types/student-type-details/student-type-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'members', pathMatch:'full'},
@@ -27,6 +30,9 @@ const routes: Routes = [
   {path: 'payment-types',component:PaymentTypesComponent},
   {path: 'payment-types/create',component:PaymentTypesCreateComponent},
   {path: 'payment-types/:paymentTypeId',component:PaymentTypesDetailComponent},
+  {path: 'student-types',component:StudentTypesComponent},
+  {path: 'student-types/create',component:StudentTypeCreateComponent},
+  {path: 'student-types/:typeId',component:StudentTypeDetailsComponent},
   
 ];
 

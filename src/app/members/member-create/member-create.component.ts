@@ -1,3 +1,4 @@
+import { th } from 'date-fns/locale';
 import { PaymentTypeService } from './../../payment-types/payment-type.service';
 import { MembershipStatusService } from './../../membership-status/membership-status.service';
 import { MembershipStatus } from './../../membership-status/membership-status.model';
@@ -19,18 +20,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   providers:[MemberService,MemberTypeService,MembershipStatusService],
 })
 export class MemberCreateComponent implements OnInit{
-  
-  
-  dateOfBirth: NgbDateStruct| undefined;
-  dateOfMembershipBegin: NgbDateStruct| undefined;
-  dateOfMembershipEnd: NgbDateStruct| undefined;
-  webRezervation:boolean=true;
+
+
+  dateOfBirth: Date| undefined;
+  dateOfMembershipBegin: Date| undefined;
+  dateOfMembershipEnd: Date| undefined;
 	today = this.calendar.getToday();
   myData: any;
-  member:any;
+  member:Member;
   memberTypes:MemberType[];
   membershipStatuses:MembershipStatus[];
-  
+
 
   constructor(private memberService:MemberService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private router:Router,private calendar: NgbCalendar, private alertify:AlertifyService){
     this.ngOnInit()
@@ -44,18 +44,40 @@ export class MemberCreateComponent implements OnInit{
      this.membershipStatusService.getMembershipStatuses().subscribe(data=>{
       this.membershipStatuses =data;
    })
-   
+
   }
 
   memberForm = new FormGroup({
     firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
     lastName : new FormControl("",[Validators.required, Validators.minLength(3)]),
-
     nationalId: new FormControl(""),
     job : new FormControl(""),
     placeOfBirth : new FormControl(""),
+    fatherName : new FormControl(""),
+    motherName : new FormControl(""),
+    membershipStatus : new FormControl(),
+    memberType : new FormControl(),
+    email : new FormControl(),
+    mobilePhone : new FormControl(),
+    homePhone : new FormControl(),
+    gender:new FormControl(),
+    note : new FormControl(""),
+    dateOfMembershipBegin:new FormControl(),
+    dateOfMembershipEnd:new FormControl(),
+    dateOfBirth:new FormControl(),
+
+
     // job : new FormControl("",[Validators.required,ImageValidator.isValidExtension]),
   })
+
+  setDate(date:NgbDateStruct){
+
+    console.log(date)
+    const dt =date
+    const jsDate = new Date(dt.year, dt.month-1, dt.day+1);
+    // return jsDate.toISOString().slice(0, 10).toString();
+    return jsDate
+  }
   createMember(){
     // this.member={
     //   firstName:this.memberForm.value.firstName,
@@ -66,6 +88,11 @@ export class MemberCreateComponent implements OnInit{
     // }
     if(this.memberForm.valid){
       this.member=Object.assign({},this.memberForm.value)
+      this.member.dateOfMembershipBegin=this.setDate(this.memberForm.value.dateOfMembershipBegin)
+      this.member.dateOfMembershipEnd=this.setDate(this.memberForm.value.dateOfMembershipEnd)
+      this.member.dateOfBirth=this.setDate(this.memberForm.value.dateOfBirth)
+
+      console.log(this.member.dateOfBirth)
     }
 
     this.memberService.createMember(this.member).subscribe(data=>{

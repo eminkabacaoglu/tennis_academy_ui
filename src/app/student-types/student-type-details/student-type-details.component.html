@@ -1,0 +1,69 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="paymentTypeCreateForm"></ng-template>
+</div>
+
+
+<ng-template #paymentTypeCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5>Öğrenci Tipi Güncelle</h5>
+                                </div>
+                                <div class="col">
+                                    <a routerLink="/student-types/create" class="float-right btn btn-sm btn-success"><i class="fa fa-plus"></i></a>
+                                    <a routerLink="/student-types" class="float-right btn btn-sm btn-warning float-right mr-3"><i class="fa fa-list"></i></a>
+                                    
+                                </div>
+                            </div>
+                            <form [formGroup]="studentTypeForm" (ngSubmit)="updateStudentType()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="typeCode">Tip Kodu</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="typeCode"
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Açıklama</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="description"
+                                                    formControlName="description"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <button (click)="deleteStudentTypeDetail()" class="btn btn-danger ml-3">Sil</button>
+                                            <button type="submit" class="btn btn-primary ml-3">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+

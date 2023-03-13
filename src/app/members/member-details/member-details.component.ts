@@ -22,7 +22,7 @@ export class MemberDetailsComponent implements OnInit{
   member:Member;
   memberUpdated:Member;
   memberForm:FormGroup;
-  dateOfBirth: NgbDateStruct| undefined;
+  dateOfBirth: Date| undefined;
   dateOfMembershipBegin: Date| undefined;
   dateOfMembershipEnd: Date| undefined;
 	today = this.calendar.getToday();
@@ -41,12 +41,20 @@ export class MemberDetailsComponent implements OnInit{
       password : new FormControl("",[Validators.required]),
       nationalId : new FormControl(),
       placeOfBirth : new FormControl(),
+      fatherName : new FormControl(),
+      motherName : new FormControl(),
+      mobilePhone : new FormControl(),
+      homePhone : new FormControl(),
+      email : new FormControl(),
       memberType: new FormControl(null,[Validators.required]),
       membershipStatus: new FormControl(null,[Validators.required]),
       active:new FormControl(),
       webReservation:new FormControl(),
       dateOfMembershipBegin:new FormControl(),
       dateOfMembershipEnd:new FormControl(),
+      dateOfBirth:new FormControl(),
+      gender:new FormControl([Validators.required]),
+      note:new FormControl(),
     })
 
     
@@ -78,20 +86,29 @@ export class MemberDetailsComponent implements OnInit{
           job:this.member.job,
           username:this.member.username,
           password:this.member.password,
+          gender:this.member.gender,
           nationalId:this.member.nationalId,
           placeOfBirth:this.member.placeOfBirth,
+          fatherName:this.member.fatherName,
+          motherName:this.member.motherName,
+          mobilePhone:this.member.mobilePhone,
+          homePhone:this.member.homePhone,
+          email:this.member.email,
           memberType:this.member.memberType,
           membershipStatus:this.member.membershipStatus,
           active:this.member.active,
           webReservation:this.member.webReservation,
           dateOfMembershipBegin:new Date(this.member.dateOfMembershipBegin),
           dateOfMembershipEnd:new Date(this.member.dateOfMembershipEnd),
+          dateOfBirth:new Date(this.member.dateOfBirth),
+          note:this.member.note,
           
         
         })
         
         this.memberForm.controls["dateOfMembershipBegin"].setValue(this.setNg(new Date(this.member.dateOfMembershipBegin)))
         this.memberForm.controls["dateOfMembershipEnd"].setValue(this.setNg(new Date(this.member.dateOfMembershipEnd)))
+        this.memberForm.controls["dateOfBirth"].setValue(this.setNg(new Date(this.member.dateOfBirth)))
         // console.log(this.memberForm.value.dateOfMembershipBegin)
         // console.log(this.member.dateOfMembershipBegin)
     
@@ -142,6 +159,7 @@ export class MemberDetailsComponent implements OnInit{
       this.memberUpdated=Object.assign({},this.memberForm.value)
       this.memberUpdated.dateOfMembershipBegin=this.setDate(this.memberForm.value.dateOfMembershipBegin)
       this.memberUpdated.dateOfMembershipEnd=this.setDate(this.memberForm.value.dateOfMembershipEnd)
+      this.memberUpdated.dateOfBirth=this.setDate(this.memberForm.value.dateOfBirth)
     }
 
     console.log("getttttt: "+this.memberForm.value.dateOfMembershipBegin)

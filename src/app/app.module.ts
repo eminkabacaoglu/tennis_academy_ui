@@ -20,7 +20,6 @@ import { LoadingComponent } from './shared/loading/loading.component';
 import { StudentsComponent } from './students/students.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { MemberTypesComponent } from './member-types/member-types.component';
-import { StudentTypesComponent } from './student-types/student-types.component';
 import { EmployeeTypesComponent } from './employee-types/employee-types.component';
 import { MemberTypesCreateComponent } from './member-types/member-types-create/member-types-create.component';
 import { MemberTypesDetailsComponent } from './member-types/member-types-details/member-types-details.component';
@@ -30,6 +29,12 @@ import { MembershipStatusDetailComponent } from './membership-status/membership-
 import { PaymentTypesComponent } from './payment-types/payment-types.component';
 import { PaymentTypesCreateComponent } from './payment-types/payment-types-create/payment-types-create.component';
 import { PaymentTypesDetailComponent } from './payment-types/payment-types-detail/payment-types-detail.component';
+import { CitiesComponent } from './cities/cities.component';
+import { CountriesComponent } from './countries/countries.component';
+import { CountiesComponent } from './counties/counties.component';
+import { StudentTypesComponent } from './student-types/student-types.component';
+import { StudentTypeCreateComponent } from './student-types/student-type-create/student-type-create.component';
+import { StudentTypeDetailsComponent } from './student-types/student-type-details/student-type-details.component';
 
 
 @NgModule({
@@ -56,6 +61,11 @@ import { PaymentTypesDetailComponent } from './payment-types/payment-types-detai
     PaymentTypesComponent,
     PaymentTypesCreateComponent,
     PaymentTypesDetailComponent,
+    CitiesComponent,
+    CountriesComponent,
+    CountiesComponent,
+    StudentTypeCreateComponent,
+    StudentTypeDetailsComponent,
     
   ],
   imports: [

@@ -55,21 +55,20 @@
                                             <div class="form-group">
                                                 <label for="gender">Cinsiyet</label>
                                                 <select formControlName="gender" id="gender" name="gender" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
+                                                    <option [selected]="true" value="">Seçiniz</option>
                                                     <option value="Female">Kadın</option>
                                                     <option value="Male">Erkek</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="dateOfBirth">Doğum Günü</label>
+                                                <label for="dateOfBirth">Doğum Tarihi</label>
                                                 <div class="input-group date" data-target-input="nearest">
                                                     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                                                     <input
                                                         class="form-control"
                                                         placeholder="yyyy-mm-dd"
                                                         name="dateOfBirth"
-                                                        [(ngModel)]="dateOfBirth"
-                                                        [ngModelOptions]="{standalone: true}"
+                                                        formControlName="dateOfBirth"
                                                         ngbDatepicker
                                                         #d="ngbDatepicker"/>
                                                     
@@ -164,8 +163,7 @@
                                                         placeholder="yyyy-mm-dd"
                                                         name="dateOfMembershipBegin"
                                                         id="dateOfMembershipBegin"
-                                                        [(ngModel)]="dateOfMembershipBegin"
-                                                        [ngModelOptions]="{standalone: true}"
+                                                        formControlName="dateOfMembershipBegin"
                                                         ngbDatepicker
                                                         #db="ngbDatepicker"/>
                                                     
@@ -181,8 +179,7 @@
                                                         placeholder="yyyy-mm-dd"
                                                         name="dateOfMembershipEnd"
                                                         id="dateOfMembershipEnd"
-                                                        [(ngModel)]="dateOfMembershipEnd"
-                                                        [ngModelOptions]="{standalone: true}"
+                                                        formControlName="dateOfMembershipEnd"
                                                         ngbDatepicker
                                                         #de="ngbDatepicker"/>
                                                     
