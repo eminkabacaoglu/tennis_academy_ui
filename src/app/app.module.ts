@@ -35,6 +35,12 @@ import { CountiesComponent } from './counties/counties.component';
 import { StudentTypesComponent } from './student-types/student-types.component';
 import { StudentTypeCreateComponent } from './student-types/student-type-create/student-type-create.component';
 import { StudentTypeDetailsComponent } from './student-types/student-type-details/student-type-details.component';
+import { LevelsComponent } from './levels/levels.component';
+import { ModuleTypesComponent } from './module-types/module-types.component';
+import { ModuleTypesCreateComponent } from './module-types/module-types-create/module-types-create.component';
+import { ModuleTypesDetailsComponent } from './module-types/module-types-details/module-types-details.component';
+import { LevelsCreateComponent } from './levels/levels-create/levels-create.component';
+import { LevelsDetailsComponent } from './levels/levels-details/levels-details.component';
 
 
 @NgModule({
@@ -66,6 +72,12 @@ import { StudentTypeDetailsComponent } from './student-types/student-type-detail
     CountiesComponent,
     StudentTypeCreateComponent,
     StudentTypeDetailsComponent,
+    LevelsComponent,
+    ModuleTypesComponent,
+    ModuleTypesCreateComponent,
+    ModuleTypesDetailsComponent,
+    LevelsCreateComponent,
+    LevelsDetailsComponent,
     
   ],
   imports: [

@@ -15,6 +15,12 @@ import { MemberTypesDetailsComponent } from './member-types/member-types-details
 import { MemberTypesCreateComponent } from './member-types/member-types-create/member-types-create.component';
 import { StudentTypeCreateComponent } from './student-types/student-type-create/student-type-create.component';
 import { StudentTypeDetailsComponent } from './student-types/student-type-details/student-type-details.component';
+import { ModuleTypesComponent } from './module-types/module-types.component';
+import { ModuleTypesCreateComponent } from './module-types/module-types-create/module-types-create.component';
+import { ModuleTypesDetailsComponent } from './module-types/module-types-details/module-types-details.component';
+import { LevelsComponent } from './levels/levels.component';
+import { LevelsCreateComponent } from './levels/levels-create/levels-create.component';
+import { LevelsDetailsComponent } from './levels/levels-details/levels-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'members', pathMatch:'full'},
@@ -33,6 +39,12 @@ const routes: Routes = [
   {path: 'student-types',component:StudentTypesComponent},
   {path: 'student-types/create',component:StudentTypeCreateComponent},
   {path: 'student-types/:typeId',component:StudentTypeDetailsComponent},
+  {path: 'module-types',component:ModuleTypesComponent},
+  {path: 'module-types/create',component:ModuleTypesCreateComponent},
+  {path: 'module-types/:moduleTypeId',component:ModuleTypesDetailsComponent},
+  {path: 'levels',component:LevelsComponent},
+  {path: 'levels/create',component:LevelsCreateComponent},
+  {path: 'levels/:levelId',component:LevelsDetailsComponent},
   
 ];
 

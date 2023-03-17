@@ -26,21 +26,21 @@
       <ng-template [ngTemplateOutlet]="noMembers"></ng-template>
     </div> -->
     
-    <ng-template [ngTemplateOutlet]="memberTypesList"></ng-template>
+    <ng-template [ngTemplateOutlet]="moduleTypesList"></ng-template>
     <!-- Main content -->
     
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <ng-template #memberTypesList>
+  <ng-template #moduleTypesList>
     <section class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Üye Tipleri</h3>
-                  <a routerLink="/member-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                  <h3 class="card-title">Modül Tipleri</h3>
+                  <a routerLink="/module-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -49,19 +49,15 @@
                     <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Kod</th>
                       <th>Açıklama</th>
-                      <th>Ödeme Tipi</th>
                       <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let memberType of memberTypes; let i = index" >
-                          <td class="td-small">{{memberType.id}}</td>
-                          <td>{{memberType.typeCode | titlecase}}</td>
-                          <td>{{memberType.description| titlecase}}</td>
-                          <td>{{memberType.paymentType.description | titlecase}}</td>
-                          <td class="td-small"><a routerLink="/member-types/{{memberType.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
+                        <tr *ngFor="let moduleType of moduleTypes; let i = index" >
+                          <td class="td-small">{{moduleType.id}}</td>
+                          <td>{{moduleType.moduleDescription | titlecase}}</td>
+                          <td class="td-small"><a routerLink="/module-types/{{moduleType.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>
                   </table>
@@ -78,9 +74,11 @@
       </section>
 </ng-template>
   
-<ng-template #noMembers>
+<ng-template #noModules>
   <div class="alert alert-warning" >
       Üye Tipi Bulunamadı.
   </div>
 </ng-template>
+
+
 

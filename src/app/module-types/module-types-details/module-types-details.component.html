@@ -1,38 +1,38 @@
 <div class="content-wrapper">
     <section class="content-header">
     </section>
-    <ng-template [ngTemplateOutlet]="paymentTypeCreateForm"></ng-template>
+    <ng-template [ngTemplateOutlet]="moduleTypeCreateForm"></ng-template>
 </div>
 
 
-<ng-template #paymentTypeCreateForm>
+<ng-template #moduleTypeCreateForm>
     <section class="content">
         <div class="container-fluid">
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="card-header">
-                                <h3 class="card-title">Üyelik Statüsü Güncelle</h3>
-                                <a routerLink="/membership-statuses/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
-                                <a routerLink="/membership-statuses" class="btn btn-sm btn-primary float-right mr-2"><i class="fa fa-list"></i></a>  
+                                <h3 class="card-title">Modül Tipi Güncelle</h3>
+                                <a routerLink="/module-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/module-types" class="btn btn-sm btn-primary float-right mr-2"><i class="fa fa-list"></i></a>  
                             </div>
-                            <form [formGroup]="membershipStatusForm" (ngSubmit)="updateMembershipStatus()">
+                            <form [formGroup]="moduleTypeForm" (ngSubmit)="updateModuleType()">
                                 <div class="row d-flex justify-content-around">
                                     <!-- Left Block -->
                                     <div class="col-md-6">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="description">Üyelik Statüsü</label>
+                                                <label for="moduleDescription">Modül Tipi</label>
                                                 <input
                                                     type="text"
                                                     class="form-control"
-                                                    name="statusName"
-                                                    formControlName="statusName"
+                                                    name="moduleDescription"
+                                                    formControlName="moduleDescription"
                                                 />
                                             </div>
                                         </div>
                                         <div class="card-footer float-right">
-                                            <button (click)="deleteMembershipStatus()" class="btn btn-danger ml-3">Sil</button>
+                                            <button (click)="deleteModuleDetail()" class="btn btn-danger ml-3">Sil</button>
                                             <button type="submit" class="btn btn-primary ml-3">Güncelle</button>
                                         </div>
                                     </div>

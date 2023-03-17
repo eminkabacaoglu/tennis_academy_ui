@@ -39,8 +39,8 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Üye Tipleri</h3>
-                  <a routerLink="/member-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                  <h3 class="card-title">Seviyeler</h3>
+                  <a routerLink="/levels/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -51,17 +51,19 @@
                       <th>Id</th>
                       <th>Kod</th>
                       <th>Açıklama</th>
-                      <th>Ödeme Tipi</th>
+                      <th>Kota</th>
+                      <th>Modül Tipi</th>
                       <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let memberType of memberTypes; let i = index" >
-                          <td class="td-small">{{memberType.id}}</td>
-                          <td>{{memberType.typeCode | titlecase}}</td>
-                          <td>{{memberType.description| titlecase}}</td>
-                          <td>{{memberType.paymentType.description | titlecase}}</td>
-                          <td class="td-small"><a routerLink="/member-types/{{memberType.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
+                        <tr *ngFor="let level of levels; let i = index" >
+                          <td class="td-small">{{level.id}}</td>
+                          <td>{{level.levelCode | titlecase}}</td>
+                          <td>{{level.levelDescription | titlecase}}</td>
+                          <td>{{level.quota}}</td>
+                          <td>{{level.moduleType.moduleDescription | titlecase}}</td>
+                          <td class="td-small"><a routerLink="/levels/{{level.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>
                   </table>
@@ -83,4 +85,5 @@
       Üye Tipi Bulunamadı.
   </div>
 </ng-template>
+
 
