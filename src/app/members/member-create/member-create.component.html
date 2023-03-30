@@ -95,7 +95,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" formControlName="mobile" name="mobile" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
+                                                    <input type="text" class="form-control" formControlName="mobilePhone" name="mobilePhone" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -104,7 +104,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="home" formControlName="home" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
+                                                    <input type="text" class="form-control" name="homePhone" formControlName="homePhone" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -210,16 +210,17 @@
                                             <div class="form-group">
                                                 <label for="city">İl</label>
                                                 <select id="city" formControlName="city" name="city" class="custom-select" style="width: 100%;">
-                                                    <option>Seçiniz</option>
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of cities " [ngValue]="item">{{item.cityName}}</option>
                                                 </select>
                                             </div>
 
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label for="county">İlçe</label>
                                                 <select id="county" formControlName="county" name="county" class="custom-select" style="width: 100%;">
                                                     <option>Seçiniz</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
 
                                             <div class="form-group">
                                                 <label for="note">Not</label>

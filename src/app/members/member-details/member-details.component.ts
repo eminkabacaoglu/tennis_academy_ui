@@ -10,12 +10,14 @@ import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { MemberService } from '../member.service';
 import { AlertifyService } from 'src/app/shared/alertify.service';
 import { MemberTypeService } from 'src/app/member-types/member-type.service';
+import { City } from 'src/app/cities/city.model';
+import { CityService } from 'src/app/cities/city.service';
 
 @Component({
   selector: 'app-member-details',
   templateUrl: './member-details.component.html',
   styleUrls: ['./member-details.component.css'],
-  providers:[MemberService,ConfirmationDialogService,MemberTypeService,MembershipStatusService]
+  providers:[MemberService,ConfirmationDialogService,MemberTypeService,MembershipStatusService,CityService]
 })
 export class MemberDetailsComponent implements OnInit{
 
@@ -28,10 +30,11 @@ export class MemberDetailsComponent implements OnInit{
 	today = this.calendar.getToday();
   myData: any;
   memberTypes:MemberType[];
+  cities:City[];
   membershipStatuses:MembershipStatus[];
   formatteStringdDate:string;
   stringifiedData:JSON;
-  constructor(private memberService:MemberService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private calendar: NgbCalendar,private router:Router,private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder,private confirmationDialogService: ConfirmationDialogService, private alertify:AlertifyService){
+  constructor(private memberService:MemberService,private cityService:CityService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private calendar: NgbCalendar,private router:Router,private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder,private confirmationDialogService: ConfirmationDialogService, private alertify:AlertifyService){
     
     this.memberForm = new FormGroup({
       firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
@@ -45,6 +48,7 @@ export class MemberDetailsComponent implements OnInit{
       motherName : new FormControl(),
       mobilePhone : new FormControl(),
       homePhone : new FormControl(),
+      city : new FormControl(),
       email : new FormControl(),
       memberType: new FormControl(null,[Validators.required]),
       membershipStatus: new FormControl(null,[Validators.required]),
@@ -79,6 +83,10 @@ export class MemberDetailsComponent implements OnInit{
         this.membershipStatuses =data;
         })
 
+        this.cityService.getCities().subscribe(data=>{
+          this.cities =data;
+       })
+
         this.member=data
         this.memberForm.patchValue({
           firstName:this.member.firstName,
@@ -90,6 +98,7 @@ export class MemberDetailsComponent implements OnInit{
           nationalId:this.member.nationalId,
           placeOfBirth:this.member.placeOfBirth,
           fatherName:this.member.fatherName,
+          city:this.member.city,
           motherName:this.member.motherName,
           mobilePhone:this.member.mobilePhone,
           homePhone:this.member.homePhone,
@@ -125,6 +134,11 @@ export class MemberDetailsComponent implements OnInit{
   }
   
   memberType(a: MemberType, b: MemberType): boolean {
+    return a.id === b.id;
+  }
+
+
+  cty(a: City, b: City): boolean {
     return a.id === b.id;
   }
 
@@ -164,6 +178,7 @@ export class MemberDetailsComponent implements OnInit{
 
     console.log("getttttt: "+this.memberForm.value.dateOfMembershipBegin)
     console.log("getttttt2: "+ this.memberForm.value.firstName)
+    console.log("getttttt2: "+ this.memberForm.value.city)
 
 
       console.log(this.memberUpdated.dateOfMembershipBegin); 

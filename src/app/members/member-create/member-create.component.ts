@@ -1,3 +1,5 @@
+import { City } from './../../cities/city.model';
+import { CityService } from './../../cities/city.service';
 import { th } from 'date-fns/locale';
 import { PaymentTypeService } from './../../payment-types/payment-type.service';
 import { MembershipStatusService } from './../../membership-status/membership-status.service';
@@ -17,7 +19,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   selector: 'app-member-create',
   templateUrl: './member-create.component.html',
   styleUrls: ['./member-create.component.css'],
-  providers:[MemberService,MemberTypeService,MembershipStatusService],
+  providers:[MemberService,MemberTypeService,MembershipStatusService,CityService],
 })
 export class MemberCreateComponent implements OnInit{
 
@@ -30,9 +32,11 @@ export class MemberCreateComponent implements OnInit{
   member:Member;
   memberTypes:MemberType[];
   membershipStatuses:MembershipStatus[];
+  cities:City[];
+  
 
 
-  constructor(private memberService:MemberService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private router:Router,private calendar: NgbCalendar, private alertify:AlertifyService){
+  constructor(private memberService:MemberService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private router:Router,private calendar: NgbCalendar, private alertify:AlertifyService,private cityService:CityService){
     this.ngOnInit()
   }
 
@@ -44,6 +48,9 @@ export class MemberCreateComponent implements OnInit{
      this.membershipStatusService.getMembershipStatuses().subscribe(data=>{
       this.membershipStatuses =data;
    })
+   this.cityService.getCities().subscribe(data=>{
+    this.cities =data;
+ })
 
   }
 
@@ -56,6 +63,7 @@ export class MemberCreateComponent implements OnInit{
     fatherName : new FormControl(""),
     motherName : new FormControl(""),
     membershipStatus : new FormControl(),
+    city : new FormControl(),
     memberType : new FormControl(),
     email : new FormControl(),
     mobilePhone : new FormControl(),

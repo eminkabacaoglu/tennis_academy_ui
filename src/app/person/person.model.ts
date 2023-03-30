@@ -1,3 +1,5 @@
+import { City } from "../cities/city.model";
+
 export interface Person{
     id?:number;
     firstName?:string;
@@ -11,7 +13,7 @@ export interface Person{
     mobilePhone?:string;
     homePhone?:string;
     photoUrl?:string;
-    city?:string;
+    city?:City;
     county?:string;
     email?:string;
     createdAt?:Date;
