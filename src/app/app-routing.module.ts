@@ -21,12 +21,18 @@ import { ModuleTypesDetailsComponent } from './module-types/module-types-details
 import { LevelsComponent } from './levels/levels.component';
 import { LevelsCreateComponent } from './levels/levels-create/levels-create.component';
 import { LevelsDetailsComponent } from './levels/levels-details/levels-details.component';
+import { StudentsComponent } from './students/students.component';
+import { StudentCreateComponent } from './students/student-create/student-create.component';
+import { StudentDetailsComponent } from './students/student-details/student-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'members', pathMatch:'full'},
   {path: 'members',component:MembersComponent},
   {path: 'members/create',component:MemberCreateComponent},
   {path: 'members/:memberId',component:MemberDetailsComponent},
+  {path: 'students',component:StudentsComponent},
+  {path: 'students/create',component:StudentCreateComponent},
+  {path: 'students/:studentId',component:StudentDetailsComponent},
   {path: 'member-types',component:MemberTypesComponent},
   {path: 'member-types/create',component:MemberTypesCreateComponent},
   {path: 'member-types/:typeId',component:MemberTypesDetailsComponent},

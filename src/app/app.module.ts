@@ -41,6 +41,8 @@ import { ModuleTypesCreateComponent } from './module-types/module-types-create/m
 import { ModuleTypesDetailsComponent } from './module-types/module-types-details/module-types-details.component';
 import { LevelsCreateComponent } from './levels/levels-create/levels-create.component';
 import { LevelsDetailsComponent } from './levels/levels-details/levels-details.component';
+import { StudentCreateComponent } from './students/student-create/student-create.component';
+import { StudentDetailsComponent } from './students/student-details/student-details.component';
 
 
 @NgModule({
@@ -78,6 +80,8 @@ import { LevelsDetailsComponent } from './levels/levels-details/levels-details.c
     ModuleTypesDetailsComponent,
     LevelsCreateComponent,
     LevelsDetailsComponent,
+    StudentCreateComponent,
+    StudentDetailsComponent,
     
   ],
   imports: [
