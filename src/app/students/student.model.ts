@@ -1,5 +1,6 @@
 import { StudentType } from './../student-types/student-type.model';
 import { Person } from './../person/person.model';
+import { Level } from '../levels/level.model';
 export interface Student extends Person{
     school?:string
     fatherName?:string
@@ -10,6 +11,7 @@ export interface Student extends Person{
     alternativeParent?:string
     dateOfRegisteration?:Date
     studentType?:StudentType
+    level?:Level
     attendanceType?:string
 
 }
