@@ -24,6 +24,12 @@ import { LevelsDetailsComponent } from './levels/levels-details/levels-details.c
 import { StudentsComponent } from './students/students.component';
 import { StudentCreateComponent } from './students/student-create/student-create.component';
 import { StudentDetailsComponent } from './students/student-details/student-details.component';
+import { LockersComponent } from './lockers/lockers.component';
+import { LockerCreateComponent } from './lockers/locker-create/locker-create.component';
+import { LockerDetailsComponent } from './lockers/locker-details/locker-details.component';
+import { LockerTypesComponent } from './locker-types/locker-types.component';
+import { LockerTypesDetailsComponent } from './locker-types/locker-types-details/locker-types-details.component';
+import { LockerTypesCreateComponent } from './locker-types/locker-types-create/locker-types-create.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'members', pathMatch:'full'},
@@ -51,6 +57,12 @@ const routes: Routes = [
   {path: 'levels',component:LevelsComponent},
   {path: 'levels/create',component:LevelsCreateComponent},
   {path: 'levels/:levelId',component:LevelsDetailsComponent},
+  {path: 'lockers',component:LockersComponent},
+  {path: 'lockers/create',component:LockerCreateComponent},
+  {path: 'lockers/:lockerId',component:LockerDetailsComponent},
+  {path: 'locker-types',component:LockerTypesComponent},
+  {path: 'locker-types/create',component:LockerTypesCreateComponent},
+  {path: 'locker-types/:typeId',component:LockerTypesDetailsComponent},
   
 ];
 

@@ -43,6 +43,12 @@ import { LevelsCreateComponent } from './levels/levels-create/levels-create.comp
 import { LevelsDetailsComponent } from './levels/levels-details/levels-details.component';
 import { StudentCreateComponent } from './students/student-create/student-create.component';
 import { StudentDetailsComponent } from './students/student-details/student-details.component';
+import { LockersComponent } from './lockers/lockers.component';
+import { LockerCreateComponent } from './lockers/locker-create/locker-create.component';
+import { LockerDetailsComponent } from './lockers/locker-details/locker-details.component';
+import { LockerTypesComponent } from './locker-types/locker-types.component';
+import { LockerTypesCreateComponent } from './locker-types/locker-types-create/locker-types-create.component';
+import { LockerTypesDetailsComponent } from './locker-types/locker-types-details/locker-types-details.component';
 
 
 @NgModule({
@@ -82,6 +88,12 @@ import { StudentDetailsComponent } from './students/student-details/student-deta
     LevelsDetailsComponent,
     StudentCreateComponent,
     StudentDetailsComponent,
+    LockersComponent,
+    LockerCreateComponent,
+    LockerDetailsComponent,
+    LockerTypesComponent,
+    LockerTypesCreateComponent,
+    LockerTypesDetailsComponent,
     
   ],
   imports: [
