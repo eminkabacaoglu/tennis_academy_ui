@@ -1,1 +1,57 @@
-<p>locker-types-details works!</p>
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="lockerTypeCreateForm"></ng-template>
+</div>
+
+
+<ng-template #lockerTypeCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h3 class="card-title">Dolap Tipi Güncelle</h3>
+                                <a routerLink="/locker-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/locker-types" class="btn btn-sm btn-primary float-right mr-2"><i class="fa fa-list"></i></a>  
+                            </div>
+                            <form [formGroup]="lockerTypeForm" (ngSubmit)="updateLockerType()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="description">Dolap Tipi</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="description"
+                                                    formControlName="description"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <button (click)="deleteLockerTypeDetail()" class="btn btn-danger ml-3">Sil</button>
+                                            <button type="submit" class="btn btn-primary ml-3">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+
+

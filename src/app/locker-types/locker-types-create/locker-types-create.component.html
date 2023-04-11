@@ -1,1 +1,51 @@
-<p>locker-types-create works!</p>
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="levelCreateForm"></ng-template>
+</div>
+
+
+<ng-template #levelCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <h5>Yeni Dolap</h5>
+                            <form [formGroup]="lockerTypeForm" (ngSubmit)="createLockerType()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="description">Açıklama</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="description"
+                                                    formControlName="description"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <a href="locker-types" class="btn btn-secondary">İptal</a>
+                                            <button type="submit" class="btn btn-primary ml-3">Kaydet</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+

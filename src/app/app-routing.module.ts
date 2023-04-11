@@ -62,7 +62,7 @@ const routes: Routes = [
   {path: 'lockers/:lockerId',component:LockerDetailsComponent},
   {path: 'locker-types',component:LockerTypesComponent},
   {path: 'locker-types/create',component:LockerTypesCreateComponent},
-  {path: 'locker-types/:typeId',component:LockerTypesDetailsComponent},
+  {path: 'locker-types/:lockerTypeId',component:LockerTypesDetailsComponent},
   
 ];
 
