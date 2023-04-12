@@ -40,7 +40,7 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Dolap Listesi</h3>
-                  <a routerLink="/levels/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                  <a routerLink="/lockers/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -51,6 +51,8 @@
                       <th>Id</th>
                       <th>Kod</th>
                       <th>Dolap Tipi</th>
+                      <th>Aidat Ücreti</th>
+                      <th>Tahsis Ücreti</th>
                       <th></th>
                     </tr>
                     </thead>
@@ -59,6 +61,8 @@
                           <td class="td-small">{{locker.id}}</td>
                           <td>{{locker.lockerCode| titlecase}}</td>
                           <td>{{locker.lockerType.description | titlecase}}</td>
+                          <td class="text-right">{{locker.duesFee}}</td>
+                          <td class="text-right">{{locker.allocationFee}}</td>
                           <td class="td-small"><a routerLink="/lockers/{{locker.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>

@@ -36,7 +36,7 @@ export class LevelsCreateComponent implements OnInit{
   levelForm = new FormGroup({
     levelCode : new FormControl("",[Validators.required, Validators.minLength(1)]),
     levelDescription : new FormControl("",[Validators.required, Validators.minLength(3)]),
-    quota : new FormControl("",[Validators.required]),
+    quota : new FormControl(0,[Validators.required]),
     
     selecetModuleType: new UntypedFormControl("",[Validators.required]),
   })

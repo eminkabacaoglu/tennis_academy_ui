@@ -1,1 +1,80 @@
-<p>locker-details works!</p>
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="lockerCreateForm"></ng-template>
+</div>
+
+
+<ng-template #lockerCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h3 class="card-title">Dolap Güncelle</h3>
+                                <a routerLink="/lockers/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/lockers" class="btn btn-sm btn-primary float-right mr-2"><i class="fa fa-list"></i></a>  
+                            </div>
+                            <form [formGroup]="lockerForm" (ngSubmit)="updateLocker()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="lockerCode">Dolap Kodu</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="lockerCode"
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="duesFee">Aidat Ücreti</label>
+                                                <input
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="duesFee"
+                                                    formControlName="duesFee"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="allocationFee">Tahsis Ücreti</label>
+                                                <input
+                                                    type="number"
+                                                    class="form-control"
+                                                    name="allocationFee"
+                                                    formControlName="allocationFee"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lockerType">Dolap Tipi</label>
+                                                <select id="lockerType" [compareWith]="lockerTypesComp" name="lockerType" formControlName="lockerType" class="custom-select" style="width: 100%;">
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of lockerTypes "  [ngValue]="item">{{item.description}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <button (click)="deleteLocker()" class="btn btn-danger ml-3">Sil</button>
+                                            <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+
