@@ -41,7 +41,7 @@ export class LockerDetailsComponent implements OnInit{
       this.lockerService.getLockerById(params["lockerId"]).subscribe(data=>{
         this.locker=data
         if(this.locker==null){
-          this.router.navigate(["/member-types"])
+          this.router.navigate(["/lockers"])
         }
         console.log(this.locker)
         this.lockerForm.patchValue({

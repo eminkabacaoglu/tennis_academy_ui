@@ -49,6 +49,12 @@ import { LockerDetailsComponent } from './lockers/locker-details/locker-details.
 import { LockerTypesComponent } from './locker-types/locker-types.component';
 import { LockerTypesCreateComponent } from './locker-types/locker-types-create/locker-types-create.component';
 import { LockerTypesDetailsComponent } from './locker-types/locker-types-details/locker-types-details.component';
+import { FieldsComponent } from './fields/fields.component';
+import { FieldsCreateComponent } from './fields/fields-create/fields-create.component';
+import { FieldsDetailsComponent } from './fields/fields-details/fields-details.component';
+import { FieldTypesComponent } from './field-types/field-types.component';
+import { FieldTypesCreateComponent } from './field-types/field-types-create/field-types-create.component';
+import { FieldTypesDetailsComponent } from './field-types/field-types-details/field-types-details.component';
 
 
 @NgModule({
@@ -94,6 +100,12 @@ import { LockerTypesDetailsComponent } from './locker-types/locker-types-details
     LockerTypesComponent,
     LockerTypesCreateComponent,
     LockerTypesDetailsComponent,
+    FieldsComponent,
+    FieldsCreateComponent,
+    FieldsDetailsComponent,
+    FieldTypesComponent,
+    FieldTypesCreateComponent,
+    FieldTypesDetailsComponent,
     
   ],
   imports: [

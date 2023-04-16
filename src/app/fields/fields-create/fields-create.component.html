@@ -1,0 +1,78 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="lockerCreateForm"></ng-template>
+</div>
+
+
+<ng-template #lockerCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <h5>Yeni Kort</h5>
+                            <form [formGroup]="fieldForm" (ngSubmit)="createField()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="fieldCode">Kort Kodu</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="fieldCode"
+                                                        
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldName">Kort Adı</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="fieldName"
+                                                        
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldDescription">Kort Açıklama</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="fieldDescription"
+                                                        
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldType">Kort Tipi</label>
+                                                <select id="fieldType" formControlName="fieldType" name="fieldType" class="custom-select" style="width: 100%;">
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of fieldTypes " [ngValue]="item.id">{{item.fieldTypeDescription}}</option>
+                                                </select>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <a href="fields" class="btn btn-secondary">İptal</a>
+                                            <button type="submit" class="btn btn-primary ml-3">Kaydet</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+

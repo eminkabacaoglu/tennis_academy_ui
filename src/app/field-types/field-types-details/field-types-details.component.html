@@ -1,0 +1,67 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="fieldTypeCreateForm"></ng-template>
+</div>
+
+
+<ng-template #fieldTypeCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h3 class="card-title">Kort Tipi Güncelle</h3>
+                                <a routerLink="/field-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/field-types" class="btn btn-sm btn-primary float-right mr-2"><i class="fa fa-list"></i></a>  
+                            </div>
+                            <form [formGroup]="fieldTypeForm" (ngSubmit)="updateFieldType()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="fieldTypeCode">Kod</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="fieldTypeCode"
+                                                    formControlName="fieldTypeCode"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldTypeDescription">Açıklama</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="fieldTypeDescription"
+                                                    formControlName="fieldTypeDescription"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <button (click)="deleteFieldTypeDetail()" class="btn btn-danger ml-3">Sil</button>
+                                            <button type="submit" class="btn btn-primary ml-3">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+
+
+

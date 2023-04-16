@@ -30,6 +30,12 @@ import { LockerDetailsComponent } from './lockers/locker-details/locker-details.
 import { LockerTypesComponent } from './locker-types/locker-types.component';
 import { LockerTypesDetailsComponent } from './locker-types/locker-types-details/locker-types-details.component';
 import { LockerTypesCreateComponent } from './locker-types/locker-types-create/locker-types-create.component';
+import { FieldTypesDetailsComponent } from './field-types/field-types-details/field-types-details.component';
+import { FieldTypesComponent } from './field-types/field-types.component';
+import { FieldTypesCreateComponent } from './field-types/field-types-create/field-types-create.component';
+import { FieldsComponent } from './fields/fields.component';
+import { FieldsCreateComponent } from './fields/fields-create/fields-create.component';
+import { FieldsDetailsComponent } from './fields/fields-details/fields-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'members', pathMatch:'full'},
@@ -63,6 +69,12 @@ const routes: Routes = [
   {path: 'locker-types',component:LockerTypesComponent},
   {path: 'locker-types/create',component:LockerTypesCreateComponent},
   {path: 'locker-types/:lockerTypeId',component:LockerTypesDetailsComponent},
+  {path: 'fields',component:FieldsComponent},
+  {path: 'fields/create',component:FieldsCreateComponent},
+  {path: 'fields/:fieldId',component:FieldsDetailsComponent},
+  {path: 'field-types',component:FieldTypesComponent},
+  {path: 'field-types/create',component:FieldTypesCreateComponent},
+  {path: 'field-types/:fieldTypeId',component:FieldTypesDetailsComponent},
   
 ];
 

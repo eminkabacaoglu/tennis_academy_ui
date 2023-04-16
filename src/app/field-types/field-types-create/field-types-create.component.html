@@ -1,0 +1,63 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="fieldCreateForm"></ng-template>
+</div>
+
+
+<ng-template #fieldCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <h5>Yeni Kort Tipi</h5>
+                            <form [formGroup]="fieldTypeForm" (ngSubmit)="createFieldType()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="fieldTypeCode">Kod</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="fieldTypeCode"
+                                                    formControlName="fieldTypeCode"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="fieldTypeDescription">Açıklama</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    name="fieldTypeDescription"
+                                                    formControlName="fieldTypeDescription"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="card-footer float-right">
+                                            <a href="field-types" class="btn btn-secondary">İptal</a>
+                                            <button type="submit" class="btn btn-primary ml-3">Kaydet</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+

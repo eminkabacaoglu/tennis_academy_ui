@@ -1,0 +1,105 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template [ngTemplateOutlet]="fieldCreateForm"></ng-template>
+</div>
+
+
+<ng-template #fieldCreateForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h3 class="card-title">Kort Güncelle</h3>
+                                <a routerLink="/fields/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                                <a routerLink="/fields" class="btn btn-sm btn-primary float-right mr-2"><i class="fa fa-list"></i></a>  
+                            </div>
+                            <form [formGroup]="fieldForm" (ngSubmit)="updateField()">
+                                <div class="row d-flex justify-content-around">
+                                    <!-- Left Block -->
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="fieldCode">Kort Kodu</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="fieldCode"
+                                                        
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldName">Kort Adı</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="fieldName"
+                                                        
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldDescription">Kort Açıklama</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        formControlName="fieldDescription"
+                                                        
+                                                    />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="fieldType">Kort Tipi</label>
+                                                <select id="fieldType" [compareWith]="fieldTypesComp" name="fieldType" formControlName="fieldType" class="custom-select" style="width: 100%;">
+                                                    <option value="" disabled>Seçiniz</option>
+                                                    <option *ngFor="let item of fieldTypes "  [ngValue]="item">{{item.fieldTypeDescription}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <!-- active -->
+                                                        <div class="form-group clearfix">
+                                                            <div class="icheck-primary d-inline">
+                                                                <input type="checkbox" formControlName="active" id="acitve" checked>
+                                                                <label for="acitve">Aktif</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                            <!-- web reservation -->
+                                                            <div class="form-group clearfix">
+                                                                <div class="icheck-primary d-inline">
+                                                                    <input type="checkbox" formControlName="webActive" id="webActive" checked>
+                                                                    <label for="webActive">Web Aktif</label>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                </div> 
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card-footer float-right">
+                                            <button (click)="deleteField()" class="btn btn-danger ml-3">Sil</button>
+                                            <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+            </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+
+
+
+
+
+

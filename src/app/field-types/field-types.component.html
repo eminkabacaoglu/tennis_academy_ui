@@ -1,0 +1,87 @@
+
+<!-- <app-loading *ngIf="loading"></app-loading> -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <div class="alert alert-danger" *ngIf="apiError">
+      {{apiError}} 
+    </div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <!-- <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="">Ana Sayfa</a></li>
+              <li class="breadcrumb-item active">Üyeler</li>
+            </ol>
+          </div>
+        </div>
+      </div>/.container-fluid -->
+    </section>
+
+    <!-- <div  *ngIf="members.length === 0">
+      <ng-template [ngTemplateOutlet]="noMembers"></ng-template>
+    </div> -->
+    
+    <ng-template [ngTemplateOutlet]="lockerTypesList"></ng-template>
+    <!-- Main content -->
+    
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <ng-template #lockerTypesList>
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Dolap Tipleri</h3>
+                  <a routerLink="/field-types/create" class="btn btn-sm btn-success float-right"><i class="fa fa-plus"></i></a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <!-- <table datatable id="datatable1" class="table table-bordered table-striped"> -->
+                  <table datatable [dtOptions]="dtOption" [dtTrigger]="dtTrigger" id="datatable1" class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Kod</th>
+                      <th>Açıklama</th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let fieldType of fieldTypes; let i = index" >
+                          <td class="td-small">{{fieldType.id}}</td>
+                          <td class="td-small">{{fieldType.fieldTypeCode| uppercase}}</td>
+                          <td>{{fieldType.fieldTypeDescription| titlecase}}</td>
+                          <td class="td-small"><a routerLink="/field-types/{{fieldType.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+</ng-template>
+  
+<ng-template #noMembers>
+  <div class="alert alert-warning" >
+      Kort Tipi Bulunamadı.
+  </div>
+</ng-template>
+
+
+
+
