@@ -25,7 +25,7 @@ export class StudentCreateComponent implements OnInit{
 
 
   dateOfBirth: Date| undefined;
-  dateOfRegisteration: Date| undefined;
+  dateOfRegistration: Date| undefined;
 	today = this.calendar.getToday();
   myData: any;
   student:Student;
@@ -73,7 +73,7 @@ export class StudentCreateComponent implements OnInit{
     homePhone : new FormControl(),
     gender:new FormControl(),
     note : new FormControl(""),
-    dateOfRegisteration:new FormControl(),
+    dateOfRegistration:new FormControl(),
     dateOfBirth:new FormControl(),
 
 
@@ -98,7 +98,7 @@ export class StudentCreateComponent implements OnInit{
     // }
     if(this.studentForm.valid){
       this.student=Object.assign({},this.studentForm.value)
-      this.student.dateOfRegisteration=this.setDate(this.studentForm.value.dateOfRegisteration)
+      this.student.dateOfRegistration=this.setDate(this.studentForm.value.dateOfRegistration)
       this.student.dateOfBirth=this.setDate(this.studentForm.value.dateOfBirth)
 
       console.log(this.student.dateOfBirth)

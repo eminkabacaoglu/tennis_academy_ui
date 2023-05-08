@@ -55,6 +55,7 @@ import { FieldsDetailsComponent } from './fields/fields-details/fields-details.c
 import { FieldTypesComponent } from './field-types/field-types.component';
 import { FieldTypesCreateComponent } from './field-types/field-types-create/field-types-create.component';
 import { FieldTypesDetailsComponent } from './field-types/field-types-details/field-types-details.component';
+import { GeneralComponent } from './general/general.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { FieldTypesDetailsComponent } from './field-types/field-types-details/fi
     FieldTypesComponent,
     FieldTypesCreateComponent,
     FieldTypesDetailsComponent,
+    GeneralComponent,
     
   ],
   imports: [

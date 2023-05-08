@@ -1,286 +1,415 @@
 <div class="content-wrapper">
-    <section class="content-header">
-    </section>
-    <ng-template [ngTemplateOutlet]="studentCreateForm"></ng-template>
+  <section class="content-header"></section>
+  <ng-template [ngTemplateOutlet]="studentCreateForm"></ng-template>
 </div>
 
-
 <ng-template #studentCreateForm>
-    <section class="content">
-        <div class="container-fluid">
-                    <div class="card">
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5>Yeni Öğrenci</h5>
-                                </div>
-                                <div class="col">
-                                    <a routerLink="/students" class="btn btn-sm btn-warning float-right mr-3"><i class="fa fa-list"></i></a>
-                                </div>
-                            </div>
-                            <form [formGroup]="studentForm" (ngSubmit)="updateStudent()">
-                                <div class="row">
-                                    <!-- Left Block -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="firstName">Ad</label>
-                                                    <input
-                                                        type="text"
-                                                        class="form-control"
-                                                        formControlName="firstName"
-                                                    />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="lastName">Soyad</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="lastName"
-                                                    name="lastName"
-                                                    formControlName="lastName"
-                                                />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="nationalId">T.C.</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="nationalId"
-                                                    name="nationalId"
-                                                    formControlName="nationalId"
-                                                />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="gender">Cinsiyet</label>
-                                                <select formControlName="gender" id="gender" name="gender" class="custom-select" style="width: 100%;">
-                                                    <option [selected]="true" value="">Seçiniz</option>
-                                                    <option value="Female">Kadın</option>
-                                                    <option value="Male">Erkek</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dateOfBirth">Doğum Tarihi</label>
-                                                <div class="input-group date" data-target-input="nearest">
-                                                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                                                    <input
-                                                        class="form-control"
-                                                        placeholder="yyyy-mm-dd"
-                                                        name="dateOfBirth"
-                                                        id="dateOfBirth"
-                                                        formControlName="dateOfBirth"
-                                                        [value]="studentForm.get('dateOfBirth').value | date : 'yyyy-MM-dd'"
-                                                        ngbDatepicker
-                                                        #d="ngbDatepicker"/>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Middle Block -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="placeOfBirth">Doğum Yeri</label>
-                                                    <input
-                                                        type="text"
-                                                        class="form-control"
-                                                        id="placeOfBirth"
-                                                        name="placeOfBirth"
-                                                        formControlName="placeOfBirth"
-                                                    />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Mobil:</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" formControlName="mobilePhone" name="mobilePhone" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Ev:</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" name="homePhone" formControlName="homePhone" data-inputmask='"mask": "(999) 999-99-99"' data-mask>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input
-                                                    type="email"
-                                                    class="form-control"
-                                                    id="email"
-                                                    name="email"
-                                                    formControlName="email"
-                                                />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="school">Okul</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="school"
-                                                    name="school"
-                                                    formControlName="school"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="card">
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="float-right">
+            <a routerLink="/students" class="btn btn-sm btn-warning mr-3"><i class="fa fa-list"></i></a>
+            <a routerLink="/students/create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></a>
+            </div>
+            <h5>Öğrenci Düzenle</h5>
+          <form [formGroup]="studentForm" (ngSubmit)="updateStudent()">
+            <div class="row">
+              <!-- Left Block -->
+              <div class="col-md-3 col-sm-6">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="firstName">Ad</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="firstName"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Soyad</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastName"
+                      name="lastName"
+                      formControlName="lastName"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="nationalId">T.C.</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nationalId"
+                      name="nationalId"
+                      formControlName="nationalId"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="gender">Cinsiyet</label>
+                    <select
+                      formControlName="gender"
+                      id="gender"
+                      name="gender"
+                      class="custom-select"
+                      style="width: 100%"
+                    >
+                      <option [selected]="true" value="">Seçiniz</option>
+                      <option value="Female">Kadın</option>
+                      <option value="Male">Erkek</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="dateOfBirth">Doğum Tarihi</label>
+                    <div class="input-group date" data-target-input="nearest">
+                      <button
+                        class="btn btn-outline-secondary"
+                        (click)="d.toggle()"
+                        type="button"
+                      >
+                        <i class="fa fa-calendar"></i>
+                      </button>
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dateOfBirth"
+                        id="dateOfBirth"
+                        formControlName="dateOfBirth"
+                        [value]="
+                          studentForm.get('dateOfBirth').value
+                            | date : 'yyyy-MM-dd'
+                        "
+                        ngbDatepicker
+                        #d="ngbDatepicker"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <!-- active -->
+                        <div class="form-group clearfix">
+                          <div class="icheck-primary d-inline">
+                            <input
+                              type="checkbox"
+                              formControlName="active"
+                              id="active"
+                              checked
+                            />
+                            <label for="acitve">Aktif</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <!-- web reservation -->
+                        <div class="form-group clearfix">
+                          <div class="icheck-primary d-inline">
+                            <input
+                              type="checkbox"
+                              formControlName="webReservation"
+                              id="webReservation"
+                              checked
+                            />
+                            <label for="webReservation">Web Rezervasyon</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Middle Block -->
+              <div class="col-md-3 col-sm-6">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="placeOfBirth">Doğum Yeri</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="placeOfBirth"
+                      name="placeOfBirth"
+                      formControlName="placeOfBirth"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Mobil:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fas fa-phone"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="mobilePhone"
+                        name="mobilePhone"
+                        data-inputmask='"mask": "(999) 999-99-99"'
+                        data-mask
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Ev:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fas fa-phone"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="homePhone"
+                        formControlName="homePhone"
+                        data-inputmask='"mask": "(999) 999-99-99"'
+                        data-mask
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      formControlName="email"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="school">Okul</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="school"
+                      name="school"
+                      formControlName="school"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group clearfix">
+                        <div class="icheck-primary d-inline">
+                          <input
+                            type="checkbox"
+                            formControlName="inBlackList"
+                            id="inBlackList"
+                          />
+                          <label for="inBlackList">Kara Liste</label>
+                        </div>
+                      </div>
 
-                                    <!-- Middle 2 Block -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="fatherName">Baba Adı</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="fatherName"
-                                                    name="fatherName"
-                                                    formControlName="fatherName"
-                                                />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="motherName">Anne Adı</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="motherName"
-                                                    name="motherName"
-                                                    formControlName="motherName"
-                                                />
-                                            </div>
+                    </div>
+                    <div *ngIf="studentForm.get('inBlackList').value" class="col-sm-6">
+                      <textarea
+                        class="form-control"
+                        formControlName="blackListDescription"
+                        rows="3"
+                        name="blackListDescription"
+                        id="blackListDescription"
+                        placeholder="Kara Liste Sebebi..."
+                      ></textarea>
+                    </div>
+                </div>
+                  </div>
+                </div>
+              </div>
 
-                                            <div class="form-group">
-                                                <label for="dateOfRegisteration">Kayıt Tarihi</label>
-                                                <div class="input-group date" data-target-input="nearest">
-                                                    <button class="btn btn-outline-secondary" (click)="db.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                                                    <input
-                                                        class="form-control"
-                                                        placeholder="yyyy-mm-dd"
-                                                        name="dateOfRegisteration"
-                                                        id="dateOfRegisteration"
-                                                        formControlName="dateOfRegisteration"
-                                                        [value]="studentForm.get('dateOfRegisteration').value | date : 'yyyy-MM-dd'"
-                                                        ngbDatepicker
-                                                        #db="ngbDatepicker"/>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="level">Seviye</label>
-                                                <select id="level" formControlName="level" [compareWith]="lvl" name="level" class="custom-select" style="width: 100%;">
-                                                    <option value="" disabled>Seçiniz</option>
-                                                    <option *ngFor="let item of levels " [ngValue]="item">{{item.levelDescription}}</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="studentType">Öğrenci Tipi</label>
-                                                <select id="studentType"  [compareWith]="stType" formControlName="studentType" name="studentType" class="custom-select" style="width: 100%;">
-                                                    <option value="" disabled>Seçiniz</option>
-                                                    <option *ngFor="let item of studentTypes " [ngValue]="item">{{item.description}}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
+              <!-- Middle 2 Block -->
+              <div class="col-md-3 col-sm-6">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="fatherName">Baba Adı</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fatherName"
+                      name="fatherName"
+                      formControlName="fatherName"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="motherName">Anne Adı</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="motherName"
+                      name="motherName"
+                      formControlName="motherName"
+                    />
+                  </div>
 
-                                    <!-- Right Block -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="card-body">
-                                            
+                  <div class="form-group">
+                    <label for="dateOfRegistration">Kayıt Tarihi</label>
+                    <div class="input-group date" data-target-input="nearest">
+                      <button
+                        class="btn btn-outline-secondary"
+                        (click)="db.toggle()"
+                        type="button"
+                      >
+                        <i class="fa fa-calendar"></i>
+                      </button>
+                      <input
+                        class="form-control"
+                        placeholder="yyyy-mm-dd"
+                        name="dateOfRegistration"
+                        id="dateOfRegistration"
+                        formControlName="dateOfRegistration"
+                        [value]="
+                          studentForm.get('dateOfRegistration').value
+                            | date : 'yyyy-MM-dd'
+                        "
+                        ngbDatepicker
+                        #db="ngbDatepicker"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="level">Seviye</label>
+                    <select
+                      id="level"
+                      formControlName="level"
+                      [compareWith]="lvl"
+                      name="level"
+                      class="custom-select"
+                      style="width: 100%"
+                    >
+                      <option value="" disabled>Seçiniz</option>
+                      <option *ngFor="let item of levels" [ngValue]="item">
+                        {{ item.levelDescription }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="studentType">Öğrenci Tipi</label>
+                    <select
+                      id="studentType"
+                      [compareWith]="stType"
+                      formControlName="studentType"
+                      name="studentType"
+                      class="custom-select"
+                      style="width: 100%"
+                    >
+                      <option value="" disabled>Seçiniz</option>
+                      <option
+                        *ngFor="let item of studentTypes"
+                        [ngValue]="item"
+                      >
+                        {{ item.description }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
-                                            <div class="form-group">
-                                                <label for="attendanceType">Katılım</label>
-                                                <select formControlName="attendanceType" name="attendanceType" class="custom-select" style="width: 100%;">
-                                                    <option value="General">Genel</option>
-                                                    <option value="Full_Time">Tam Gün</option>
-                                                    <option value="Half_Time">Yarım Gün</option>
-                                                </select>
-                                            </div>
+              <!-- Right Block -->
+              <div class="col-md-3 col-sm-6">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="attendanceType">Katılım</label>
+                    <select
+                      formControlName="attendanceType"
+                      name="attendanceType"
+                      class="custom-select"
+                      style="width: 100%"
+                    >
+                      <option value="General">Genel</option>
+                      <option value="Full_Time">Tam Gün</option>
+                      <option value="Half_Time">Yarım Gün</option>
+                    </select>
+                  </div>
 
-                                            <div class="form-group">
-                                                <label for="city">İl</label>
-                                                <select id="city" [compareWith]="cty" formControlName="city" name="city" class="custom-select" style="width: 100%;">
-                                                    <option value="" disabled>Seçiniz</option>
-                                                    <option *ngFor="let item of cities " [ngValue]="item">{{item.cityName}}</option>
-                                                </select>
-                                            </div>
+                  <div class="form-group">
+                    <label for="city">İl</label>
+                    <select
+                      id="city"
+                      [compareWith]="cty"
+                      formControlName="city"
+                      name="city"
+                      class="custom-select"
+                      style="width: 100%"
+                    >
+                      <option value="" disabled>Seçiniz</option>
+                      <option *ngFor="let item of cities" [ngValue]="item">
+                        {{ item.cityName }}
+                      </option>
+                    </select>
+                  </div>
 
-                                            <div class="form-group">
-                                                <label for="parentNameSurname">Veli Ad Soyad</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="parentNameSurname"
-                                                    name="parentNameSurname"
-                                                    formControlName="parentNameSurname"
-                                                />
-                                            </div>
+                  <div class="form-group">
+                    <label for="parentNameSurname">Veli Ad Soyad</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="parentNameSurname"
+                      name="parentNameSurname"
+                      formControlName="parentNameSurname"
+                    />
+                  </div>
 
-                                            <div class="form-group">
-                                                <label for="parentJob">Veli Meslek</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="parentJob"
-                                                    name="parentJob"
-                                                    formControlName="parentJob"
-                                                />
-                                            </div>
+                  <div class="form-group">
+                    <label for="parentJob">Veli Meslek</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="parentJob"
+                      name="parentJob"
+                      formControlName="parentJob"
+                    />
+                  </div>
 
-                                            <div class="form-group">
-                                                <label for="parentWorkPlace">Veli Kurum</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="parentWorkPlace"
-                                                    name="parentWorkPlace"
-                                                    formControlName="parentWorkPlace"
-                                                />
-                                            </div>
+                  <div class="form-group">
+                    <label for="parentWorkPlace">Veli Kurum</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="parentWorkPlace"
+                      name="parentWorkPlace"
+                      formControlName="parentWorkPlace"
+                    />
+                  </div>
 
-                                            <div class="form-group">
-                                                <label for="alternativeParent">Alternatif Veli</label>
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="alternativeParent"
-                                                    name="alternativeParent"
-                                                    formControlName="alternativeParent"
-                                                />
-                                            </div>
+                  <div class="form-group">
+                    <label for="alternativeParent">Alternatif Veli</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="alternativeParent"
+                      name="alternativeParent"
+                      formControlName="alternativeParent"
+                    />
+                  </div>
 
-                                            <!-- <div class="form-group">
+                  <!-- <div class="form-group">
                                                 <label for="county">İlçe</label>
                                                 <select id="county" formControlName="county" name="county" class="custom-select" style="width: 100%;">
                                                     <option>Seçiniz</option>
                                                 </select>
                                             </div> -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card-footer float-right px-0">
-                                    <button (click)="deleteStudent()" class="btn btn-danger">Sil</button>
-                                    <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
-                            </div>
-                            </form>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+                </div>
+              </div>
             </div>
-            <!-- /.col -->
 
-        <!-- /.container-fluid -->
-    </section>
+            <div class="card-footer float-right px-0">
+              <button (click)="deleteStudent()" class="btn btn-danger">
+                Sil
+              </button>
+              <button type="submit" class="btn btn-warning ml-3">
+                Güncelle
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+
+    <!-- /.container-fluid -->
+  </section>
 </ng-template>
-
-
-

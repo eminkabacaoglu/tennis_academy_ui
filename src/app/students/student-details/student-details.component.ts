@@ -22,7 +22,7 @@ export class StudentDetailsComponent implements OnInit{
 
 
   dateOfBirth: Date| undefined;
-  dateOfRegisteration: Date| undefined;
+  dateOfRegistration: Date| undefined;
 	today = this.calendar.getToday();
   myData: any;
   student:Student;
@@ -32,20 +32,19 @@ export class StudentDetailsComponent implements OnInit{
   studentTypes:StudentType[];
   levels:Level[];
 
-
   constructor(private studentService:StudentService,private studentTypeService:StudentTypeService,private levelService:LevelService,private router:Router,private calendar: NgbCalendar, private alertify:AlertifyService,private cityService:CityService, private activatedRoute:ActivatedRoute,){
     this.studentForm = new FormGroup({
       firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
       lastName : new FormControl("",[Validators.required, Validators.minLength(3)]),
-      nationalId: new FormControl(""),
-      school : new FormControl(""),
-      parentNameSurname : new FormControl(""),
-      parentJob : new FormControl(""),
-      parentWorkPlace : new FormControl(""),
-      alternativeParent : new FormControl(""),
-      placeOfBirth : new FormControl(""),
-      fatherName : new FormControl(""),
-      motherName : new FormControl(""),
+      nationalId: new FormControl(),
+      school : new FormControl(),
+      parentNameSurname : new FormControl(),
+      parentJob : new FormControl(),
+      parentWorkPlace : new FormControl(),
+      alternativeParent : new FormControl(),
+      placeOfBirth : new FormControl(),
+      fatherName : new FormControl(),
+      motherName : new FormControl(),
       level : new FormControl(),
       city : new FormControl(),
       studentType : new FormControl(),
@@ -54,8 +53,12 @@ export class StudentDetailsComponent implements OnInit{
       mobilePhone : new FormControl(),
       homePhone : new FormControl(),
       gender:new FormControl(),
-      dateOfRegisteration:new FormControl(),
+      dateOfRegistration:new FormControl(),
       dateOfBirth:new FormControl(),
+      active:new FormControl(),
+      webReservation:new FormControl(),
+      inBlackList:new FormControl(),
+      blackListDescription:new FormControl(),
   
   
       // job : new FormControl("",[Validators.required,ImageValidator.isValidExtension]),
@@ -64,7 +67,7 @@ export class StudentDetailsComponent implements OnInit{
 
 
   ngOnInit(): void {
-
+    
     this.activatedRoute.params.subscribe(params=>{
       this.studentService.getStudentById(params["studentId"]).subscribe(data=>{
         
@@ -109,13 +112,15 @@ export class StudentDetailsComponent implements OnInit{
           studentType:this.student.studentType,
           active:this.student.active,
           webReservation:this.student.webReservation,
-          dateOfRegisteration:new Date(this.student.dateOfRegisteration),
+          inBlackList:this.student.inBlackList,
+          blackListDescription:this.student.blackListDescription,
+          dateOfRegistration:new Date(this.student.dateOfRegistration),
           dateOfBirth:new Date(this.student.dateOfBirth),
           
         
         })
         
-        this.studentForm.controls["dateOfRegisteration"].setValue(this.setNg(new Date(this.student.dateOfRegisteration)))
+        this.studentForm.controls["dateOfRegistration"].setValue(this.setNg(new Date(this.student.dateOfRegistration)))
         this.studentForm.controls["dateOfBirth"].setValue(this.setNg(new Date(this.student.dateOfBirth)))
         // console.log(this.memberForm.value.dateOfMembershipBegin)
         // console.log(this.member.dateOfMembershipBegin)
@@ -126,8 +131,12 @@ export class StudentDetailsComponent implements OnInit{
     })
 
   }
-  setNg(arg0: Date): any {
-    throw new Error('Method not implemented.');
+  setNg(date:Date){
+    return {
+      year:date.getFullYear(),
+      month:date.getMonth()+1,
+      day:date.getDate()
+    }
   }
 
 
@@ -162,7 +171,7 @@ export class StudentDetailsComponent implements OnInit{
     if(this.studentForm.valid){
 
       this.studentUpdated=Object.assign({},this.studentForm.value)
-      this.studentUpdated.dateOfRegisteration=this.setDate(this.studentForm.value.dateOfRegisteration)
+      this.studentUpdated.dateOfRegistration=this.setDate(this.studentForm.value.dateOfRegistration)
       this.studentUpdated.dateOfBirth=this.setDate(this.studentForm.value.dateOfBirth)
 
       console.log(this.student.dateOfBirth)
@@ -176,7 +185,7 @@ export class StudentDetailsComponent implements OnInit{
 
   deleteStudent(){
     this.studentService.deleteStudent(this.student.id).subscribe(data=>{
-      this.router.navigate(["/members"])
+      this.router.navigate(["/students"])
       this.alertify.error("Silindi")
     });
 

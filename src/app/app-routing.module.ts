@@ -36,6 +36,7 @@ import { FieldTypesCreateComponent } from './field-types/field-types-create/fiel
 import { FieldsComponent } from './fields/fields.component';
 import { FieldsCreateComponent } from './fields/fields-create/fields-create.component';
 import { FieldsDetailsComponent } from './fields/fields-details/fields-details.component';
+import { GeneralComponent } from './general/general.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'members', pathMatch:'full'},
@@ -75,6 +76,7 @@ const routes: Routes = [
   {path: 'field-types',component:FieldTypesComponent},
   {path: 'field-types/create',component:FieldTypesCreateComponent},
   {path: 'field-types/:fieldTypeId',component:FieldTypesDetailsComponent},
+  {path: 'general',component:GeneralComponent},
   
 ];
 

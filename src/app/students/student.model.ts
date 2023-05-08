@@ -9,9 +9,11 @@ export interface Student extends Person{
     parentJob?:string
     parentWorkPlace?:string
     alternativeParent?:string
-    dateOfRegisteration?:Date
+    dateOfRegistration?:Date
     studentType?:StudentType
     level?:Level
+    inBlackList?:boolean;
+    blackListDescription?:string;
     attendanceType?:string
 
 }
