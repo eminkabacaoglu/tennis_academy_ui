@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-  <section class="content-header"></section>
+   <section class="content-header"></section>
   <ng-template [ngTemplateOutlet]="studentCreateForm"></ng-template>
 </div>
 
@@ -98,7 +98,7 @@
                               id="active"
                               checked
                             />
-                            <label for="acitve">Aktif</label>
+                            <label for="active">Aktif</label>
                           </div>
                         </div>
                       </div>
@@ -195,22 +195,19 @@
                       <div class="form-group clearfix">
                         <div class="icheck-primary d-inline">
                           <input
-                            type="checkbox"
-                            formControlName="inBlackList"
-                            id="inBlackList"
+                          type="checkbox"
+                          formControlName="inBlacklist"
+                          id="inBlacklist"
                           />
-                          <label for="inBlackList">Kara Liste</label>
+                          <label for="inBlacklist">Kara Liste</label>
                         </div>
                       </div>
-
                     </div>
-                    <div *ngIf="studentForm.get('inBlackList').value" class="col-sm-6">
+                    <div *ngIf="studentForm.get('inBlacklist').value" class="col-sm-6">
                       <textarea
                         class="form-control"
                         formControlName="blackListDescription"
                         rows="3"
-                        name="blackListDescription"
-                        id="blackListDescription"
                         placeholder="Kara Liste Sebebi..."
                       ></textarea>
                     </div>

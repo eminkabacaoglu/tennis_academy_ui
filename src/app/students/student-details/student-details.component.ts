@@ -57,7 +57,7 @@ export class StudentDetailsComponent implements OnInit{
       dateOfBirth:new FormControl(),
       active:new FormControl(),
       webReservation:new FormControl(),
-      inBlackList:new FormControl(),
+      inBlacklist:new FormControl(),
       blackListDescription:new FormControl(),
   
   
@@ -112,12 +112,10 @@ export class StudentDetailsComponent implements OnInit{
           studentType:this.student.studentType,
           active:this.student.active,
           webReservation:this.student.webReservation,
-          inBlackList:this.student.inBlackList,
+          inBlacklist:this.student.inBlacklist,
           blackListDescription:this.student.blackListDescription,
           dateOfRegistration:new Date(this.student.dateOfRegistration),
-          dateOfBirth:new Date(this.student.dateOfBirth),
-          
-        
+          dateOfBirth:new Date(this.student.dateOfBirth)
         })
         
         this.studentForm.controls["dateOfRegistration"].setValue(this.setNg(new Date(this.student.dateOfRegistration)))
@@ -174,7 +172,7 @@ export class StudentDetailsComponent implements OnInit{
       this.studentUpdated.dateOfRegistration=this.setDate(this.studentForm.value.dateOfRegistration)
       this.studentUpdated.dateOfBirth=this.setDate(this.studentForm.value.dateOfBirth)
 
-      console.log(this.student.dateOfBirth)
+    
     }
 
     this.studentService.updateStudent(this.student.id,this.studentUpdated).subscribe(data=>{

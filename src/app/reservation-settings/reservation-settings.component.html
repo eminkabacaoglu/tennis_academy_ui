@@ -1,0 +1,206 @@
+<div class="content-wrapper">
+    <section class="content-header">
+    </section>
+    <ng-template *ngIf="reservationSetting!=null"  [ngTemplateOutlet]="reservationSettingsForm"></ng-template>
+    <ng-template *ngIf="reservationSetting==null" [ngTemplateOutlet]="saveForm"></ng-template>
+</div>
+
+<ng-template #reservationSettingsForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <h5>Rezervasyon Ayarları</h5>
+                            <form [formGroup]="reservationSettingForm" (ngSubmit)="updateReservationSetting()">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 pr-5">
+                                      <div class="form-group">
+                                        <label for="maxNumberOfDaysOwed">Max. Borçlu Kalınacak Gün</label>
+                                        <input type="text" class="form-control" id="maxNumberOfDaysOwed" name="maxNumberOfDaysOwed" formControlName="maxNumberOfDaysOwed" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="playerWaitingMinute">Oyuncu Bekleme Süresi (Dakika)</label>
+                                        <input type="text" class="form-control" id="playerWaitingMinute" name="playerWaitingMinute" formControlName="playerWaitingMinute" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationBeginningTime">Rezervasyon Başlangıç Saati</label>
+                                        <input type="text" class="form-control" id="reservationBeginningTime" name="reservationBeginningTime" formControlName="reservationBeginningTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationEndingTime">Rezervasyon Bitiş Saati</label>
+                                        <input type="text" class="form-control" id="reservationEndingTime" name="reservationEndingTime" formControlName="reservationEndingTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationForwardDay">Rezervasyon İleri Gün</label>
+                                        <input type="text" class="form-control" id="reservationForwardDay" name="reservationForwardDay" formControlName="reservationForwardDay" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationForwardDayForTrainers">Rezervasyon İleri Gün (Hoca)</label>
+                                        <input type="text" class="form-control" id="reservationForwardDayForTrainers" name="reservationForwardDayForTrainers" formControlName="reservationForwardDayForTrainers" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label>Rezervasyon İptal Süresi (Saat)</label>
+                                        <input type="text" class="form-control" name="reservationCancellationPeriod" id="reservationCancellationPeriod" formControlName="reservationCancellationPeriod" />
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 col-sm-12">
+                                      <div class="form-group">
+                                        <label>Rezervasyon İptal Süresi - Hoca(saat)</label>
+                                        <input type="text" class="form-control" name="reservationCancellationPeriodTrainers" id="reservationCancellationPeriodTrainers" formControlName="reservationCancellationPeriodTrainers" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationPeriod">Rezervasyon Süresi (Dakika)</label>
+                                        <input type="text" class="form-control" id="reservationPeriod" name="reservationPeriod" formControlName="reservationPeriod" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="webReservationBeginningTime">Web Rezervasyon Başlangıç Saati</label>
+                                        <input type="text" class="form-control" id="webReservationBeginningTime" name="webReservationBeginningTime" formControlName="webReservationBeginningTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="webReservationEndingTime">Web Rezervasyon Bitiş Saati</label>
+                                        <input type="text" class="form-control" id="webReservationEndingTime" name="webReservationEndingTime" formControlName="webReservationEndingTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="minTimePeriod">Minimum Zaman Dilimi (Dakika)(15,30,60)</label>
+                                        <input type="text" class="form-control" id="minTimePeriod" name="minTimePeriod" formControlName="minTimePeriod" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="maxReservationHour">Gün İçerisinde Üye İçin Max Rezervasyon Saati</label>
+                                        <input type="text" class="form-control" id="maxReservationHour" name="maxReservationHour" formControlName="maxReservationHour" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="maxReservationHourInPrimeTime">Prime Time İçerisinde Üye İçin Max Rezervasyon Saati</label>
+                                        <input type="text" class="form-control" id="maxReservationHourInPrimeTime" name="maxReservationHourInPrimeTime" formControlName="maxReservationHourInPrimeTime" />
+                                      </div>
+                                      
+                                      <div class="card-footer float-right px-0">
+                                        <button type="submit" class="btn btn-warning ml-3">Güncelle</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+</ng-template>
+
+<ng-template #saveForm>
+    <section class="content">
+        <div class="container-fluid">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <h5>Rezervasyon Ayarları</h5>
+                            <form [formGroup]="reservationSettingForm" (ngSubmit)="saveReservationSetting()">
+                                <div class="row m-5">
+                                    <div class="col-md-6 col-sm-12 pr-5">
+                                      <div class="form-group">
+                                        <label for="maxNumberOfDaysOwed">Max. Borçlu Kalınacak Gün</label>
+                                        <input type="text" class="form-control" id="maxNumberOfDaysOwed" name="maxNumberOfDaysOwed" formControlName="maxNumberOfDaysOwed" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="playerWaitingMinute">Oyuncu Bekleme Süresi (Dakika)</label>
+                                        <input type="text" class="form-control" id="playerWaitingMinute" name="playerWaitingMinute" formControlName="playerWaitingMinute" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationBeginningTime">Rezervasyon Başlangıç Saati</label>
+                                        <input type="text" class="form-control" id="reservationBeginningTime" name="reservationBeginningTime" formControlName="reservationBeginningTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationEndingTime">Rezervasyon Bitiş Saati</label>
+                                        <input type="text" class="form-control" id="reservationEndingTime" name="reservationEndingTime" formControlName="reservationEndingTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationForwardDay">Rezervasyon İleri Gün</label>
+                                        <input type="text" class="form-control" id="reservationForwardDay" name="reservationForwardDay" formControlName="reservationForwardDay" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationForwardDayForTrainers">Rezervasyon İleri Gün (Hoca)</label>
+                                        <input type="text" class="form-control" id="reservationForwardDayForTrainers" name="reservationForwardDayForTrainers" formControlName="reservationForwardDayForTrainers" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label>Rezervasyon İptal Süresi (Saat)</label>
+                                        <input type="text" class="form-control" name="reservationCancellationPeriod" id="reservationCancellationPeriod" formControlName="reservationCancellationPeriod" />
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 col-sm-12">
+                                      <div class="form-group">
+                                        <label>Rezervasyon İptal Süresi - Hoca(saat)</label>
+                                        <input type="text" class="form-control" name="reservationCancellationPeriodTrainers" id="reservationCancellationPeriodTrainers" formControlName="reservationCancellationPeriodTrainers" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="reservationPeriod">Rezervasyon Süresi (Dakika)</label>
+                                        <input type="text" class="form-control" id="reservationPeriod" name="reservationPeriod" formControlName="reservationPeriod" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="webReservationBeginningTime">Web Rezervasyon Başlangıç Saati</label>
+                                        <input type="text" class="form-control" id="webReservationBeginningTime" name="webReservationBeginningTime" formControlName="webReservationBeginningTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="webReservationEndingTime">Web Rezervasyon Bitiş Saati</label>
+                                        <input type="text" class="form-control" id="webReservationEndingTime" name="webReservationEndingTime" formControlName="webReservationEndingTime" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="minTimePeriod">Minimum Zaman Dilimi (Dakika)(15,30,60)</label>
+                                        <input type="text" class="form-control" id="minTimePeriod" name="minTimePeriod" formControlName="minTimePeriod" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="maxReservationHour">Gün İçerisinde Üye İçin Max Rezervasyon Saati</label>
+                                        <input type="text" class="form-control" id="maxReservationHour" name="maxReservationHour" formControlName="maxReservationHour" />
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                        <label for="maxReservationHourInPrimeTime">Prime Time İçerisinde Üye İçin Max Rezervasyon Saati</label>
+                                        <input type="text" class="form-control" id="maxReservationHourInPrimeTime" name="maxReservationHourInPrimeTime" formControlName="maxReservationHourInPrimeTime" />
+                                      </div>
+                                      
+                                      <div class="card-footer float-right px-0">
+                                        <button type="submit" class="btn btn-success ml-3">Kaydet</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            <!-- /.col -->
+
+        <!-- /.container-fluid -->
+    </section>
+  </ng-template>
+
+

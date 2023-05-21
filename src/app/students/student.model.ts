@@ -12,7 +12,7 @@ export interface Student extends Person{
     dateOfRegistration?:Date
     studentType?:StudentType
     level?:Level
-    inBlackList?:boolean;
+    inBlacklist?:boolean;
     blackListDescription?:string;
     attendanceType?:string
 

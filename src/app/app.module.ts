@@ -56,6 +56,7 @@ import { FieldTypesComponent } from './field-types/field-types.component';
 import { FieldTypesCreateComponent } from './field-types/field-types-create/field-types-create.component';
 import { FieldTypesDetailsComponent } from './field-types/field-types-details/field-types-details.component';
 import { GeneralComponent } from './general/general.component';
+import { ReservationSettingsComponent } from './reservation-settings/reservation-settings.component';
 
 
 @NgModule({
@@ -108,6 +109,7 @@ import { GeneralComponent } from './general/general.component';
     FieldTypesCreateComponent,
     FieldTypesDetailsComponent,
     GeneralComponent,
+    ReservationSettingsComponent,
     
   ],
   imports: [

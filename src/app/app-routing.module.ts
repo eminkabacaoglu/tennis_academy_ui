@@ -1,3 +1,4 @@
+import { ReservationSettingsComponent } from './reservation-settings/reservation-settings.component';
 import { StudentTypesComponent } from './student-types/student-types.component';
 import { PaymentTypesCreateComponent } from './payment-types/payment-types-create/payment-types-create.component';
 import { PaymentTypesDetailComponent } from './payment-types/payment-types-detail/payment-types-detail.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
   {path: 'field-types/create',component:FieldTypesCreateComponent},
   {path: 'field-types/:fieldTypeId',component:FieldTypesDetailsComponent},
   {path: 'general',component:GeneralComponent},
+  {path: 'reservation-settings',component:ReservationSettingsComponent},
   
 ];
 
