@@ -1,3 +1,39 @@
 .card-footer{
     background: white;
 }
+.detail{
+    float: right;
+    display: inline-block;
+
+}
+.title{
+    float: left;
+    display: inline-block;
+    color: gray;
+    font-size: 18px;
+    line-height: 18px;
+}
+th{
+    padding: 0;
+    text-align: center;
+    background-color: #3CBDC8;
+    color: white;
+    font-weight: normal;
+}
+td{
+    padding: 0;
+    text-align: center;
+    background-color: #E0EBF9;
+}
+.row .card-body{
+    padding: 0.5rem;
+}
+.data-input{
+    padding: 0;
+}
+.data-input-left{
+    padding-right: 0;
+}
+.data-input-right{
+    padding-left: 0;
+}
