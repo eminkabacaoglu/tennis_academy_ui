@@ -7,6 +7,6 @@ export interface Locker{
     duesFee:number;
     allocationFee:number;
     lockerType:LockerType;
-    member:Member
+    member?:Member
 
 }

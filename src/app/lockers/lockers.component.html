@@ -53,6 +53,7 @@
                       <th>Dolap Tipi</th>
                       <th>Aidat Ücreti</th>
                       <th>Tahsis Ücreti</th>
+                      <th>Üye</th>
                       <th></th>
                     </tr>
                     </thead>
@@ -63,6 +64,8 @@
                           <td>{{locker.lockerType.description | titlecase}}</td>
                           <td class="text-right">{{locker.duesFee}}</td>
                           <td class="text-right">{{locker.allocationFee}}</td>
+                          <td *ngIf="locker.member != null" >{{locker.member.id}} - {{locker.member.firstName}} {{locker.member.lastName}}</td>
+                          <td *ngIf="locker.member == null" ></td>
                           <td class="td-small"><a routerLink="/lockers/{{locker.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>

@@ -11,7 +11,7 @@ import { LockerService } from './locker.service';
   providers:[LockerService]
 })
 export class LockersComponent implements OnInit{
-  lockers:Locker[]=[];
+  lockers:Locker[];
   apiError:any;
   dtOption:DataTables.Settings={};
   dtTrigger:Subject<any> = new Subject<any>();
