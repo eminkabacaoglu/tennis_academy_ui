@@ -20,6 +20,16 @@ export class LockerService {
             catchError(this.handleError)
             );
     }
+    getLockersMemberNull():Observable<Locker[]>{
+
+        return this.http.get<Locker[]>(this.url+"/membernull").pipe(
+            map(response=>{
+                return response
+            }),
+            // delay(250), 
+            catchError(this.handleError)
+            );
+    }
 
     getLockerById(typeId:number):Observable<Locker>{
         return this.http.get<Locker>(this.url+"/"+typeId).pipe(
@@ -28,6 +38,14 @@ export class LockerService {
             // delay(500)
             );
     }
+    getLockerMemberByMemberId(typeId:number):Observable<Locker>{
+        return this.http.get<Locker>(this.url+"/member/"+typeId).pipe(
+            tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
+            catchError(this.handleError),
+            // delay(500)
+            );
+    }
+
 
     createLocker(locker:Locker):Observable<Locker>{
     

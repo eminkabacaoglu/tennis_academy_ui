@@ -1,9 +1,10 @@
+import { Locker } from './../../lockers/locker.model';
 import { MemberType } from './../../member-types/member-type.model';
 import { MembershipStatusService } from './../../membership-status/membership-status.service';
 import { MembershipStatus } from './../../membership-status/membership-status.model';
 import { ConfirmationDialogService } from './../../shared/confirmation-dialog/confirmation-dialog.service';
 import { Member } from './../member.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -12,12 +13,14 @@ import { AlertifyService } from 'src/app/shared/alertify.service';
 import { MemberTypeService } from 'src/app/member-types/member-type.service';
 import { City } from 'src/app/cities/city.model';
 import { CityService } from 'src/app/cities/city.service';
+import { LockerService } from 'src/app/lockers/locker.service';
+import { th } from 'date-fns/locale';
 
 @Component({
   selector: 'app-member-details',
   templateUrl: './member-details.component.html',
   styleUrls: ['./member-details.component.css'],
-  providers:[MemberService,ConfirmationDialogService,MemberTypeService,MembershipStatusService,CityService]
+  providers:[MemberService,ConfirmationDialogService,MemberTypeService,MembershipStatusService,CityService,LockerService]
 })
 export class MemberDetailsComponent implements OnInit{
 
@@ -34,7 +37,22 @@ export class MemberDetailsComponent implements OnInit{
   membershipStatuses:MembershipStatus[];
   formatteStringdDate:string;
   stringifiedData:JSON;
-  constructor(private memberService:MemberService,private cityService:CityService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private calendar: NgbCalendar,private router:Router,private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder,private confirmationDialogService: ConfirmationDialogService, private alertify:AlertifyService){
+  lockers:Locker[];
+  selectedLocker:Locker;
+  getMemberLocker:Locker;
+  getMemberLockerCode:string;
+
+  displayStyle = "none";
+  
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
+
+
+  constructor(private memberService:MemberService,private lockerService:LockerService,private cityService:CityService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private calendar: NgbCalendar,private router:Router,private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder,private confirmationDialogService: ConfirmationDialogService, private alertify:AlertifyService){
     
     this.memberForm = new FormGroup({
       firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
@@ -59,6 +77,8 @@ export class MemberDetailsComponent implements OnInit{
       dateOfBirth:new FormControl(),
       gender:new FormControl([Validators.required]),
       note:new FormControl(),
+      selectedLocker:new FormControl(),
+      getMemberLockerCode:new FormControl(),
     })
 
     
@@ -87,6 +107,10 @@ export class MemberDetailsComponent implements OnInit{
           this.cities =data;
        })
 
+       this.lockerService.getLockersMemberNull().subscribe(data=>{
+        this.lockers =data;
+     })
+
         this.member=data
         this.memberForm.patchValue({
           firstName:this.member.firstName,
@@ -111,7 +135,6 @@ export class MemberDetailsComponent implements OnInit{
           dateOfMembershipEnd:new Date(this.member.dateOfMembershipEnd),
           dateOfBirth:new Date(this.member.dateOfBirth),
           note:this.member.note,
-          
         
         })
         
@@ -121,6 +144,12 @@ export class MemberDetailsComponent implements OnInit{
         // console.log(this.memberForm.value.dateOfMembershipBegin)
         // console.log(this.member.dateOfMembershipBegin)
     
+        this.lockerService.getLockerMemberByMemberId(this.member.id).subscribe(data=>{
+          
+          this.getMemberLocker =data;
+          this.getMemberLockerCode =this.getMemberLocker.lockerCode;
+          this.memberForm.controls["getMemberLockerCode"].setValue(this.getMemberLockerCode);
+       })
       })
       
       
@@ -197,6 +226,23 @@ export class MemberDetailsComponent implements OnInit{
       this.alertify.error("Silindi")
     });
 
+  }
+  addLocker(){
+    this.selectedLocker=this.memberForm.get('selectedLocker').value
+    this.selectedLocker.member=this.member;
+    this.lockerService.updateLocker(this.selectedLocker.id,this.selectedLocker).subscribe(data=>{
+      this.alertify.success("Eklendi")
+      window.location.reload();
+      this.closePopup();
+    });
+  }
+
+  deleteMemberLocker(){
+    this.getMemberLocker.member=null;
+    this.lockerService.updateLocker(this.getMemberLocker.id,this.getMemberLocker).subscribe(data=>{
+      this.alertify.success("Dolap Silindi")
+      window.location.reload();
+    });
   }
 
 
