@@ -64,7 +64,7 @@
                           <td>{{locker.lockerType.description | titlecase}}</td>
                           <td class="text-right">{{locker.duesFee}}</td>
                           <td class="text-right">{{locker.allocationFee}}</td>
-                          <td *ngIf="locker.member != null" >{{locker.member.id}} - {{locker.member.firstName}} {{locker.member.lastName}}</td>
+                          <td *ngIf="locker.member != null" ><a routerLink="/members/{{locker.member.id}}" class="btn btn-sm btn-info">No:{{locker.member.id}} - {{locker.member.firstName}} {{locker.member.lastName}}</a></td>
                           <td *ngIf="locker.member == null" ></td>
                           <td class="td-small"><a routerLink="/lockers/{{locker.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
