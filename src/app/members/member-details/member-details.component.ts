@@ -210,12 +210,6 @@ export class MemberDetailsComponent implements OnInit{
       this.memberUpdated.dateOfMembershipEnd=this.setDate(this.memberForm.value.dateOfMembershipEnd)
       this.memberUpdated.dateOfBirth=this.setDate(this.memberForm.value.dateOfBirth)
     }
-
-    console.log("getttttt: "+this.memberForm.value.dateOfMembershipBegin)
-    console.log("getttttt2: "+ this.memberForm.value.firstName)
-    console.log("getttttt2: "+ this.memberForm.value.city)
-
-
       
       this.memberService.updateMember(this.member.id,this.memberUpdated).subscribe(data=>{
       // window.location.reload();
