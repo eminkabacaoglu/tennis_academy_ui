@@ -16,9 +16,10 @@
                             <a routerLink="/members/create" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></a>
                             </div>
                             <h5>Üye Düzenle</h5>
+                            <div class="row">
+                                <div class="col-md-8" >
                             <form class="mt-3" [formGroup]="memberForm" (ngSubmit)="updateMember()">
-                                <div class="row">
-                                    <div class="col-md-8" >
+                                
                                         <div class="card">
                                         <!-- Left Block -->
                                         <div class="row">
@@ -290,200 +291,198 @@
                                     
                                         </div>
                                     </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-sm-6">    
-                                                <div class="title">
-                                                    <span>Rezervasyon Borcu</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 col-sm-6">    
-                                                <div class="detail">
-                                                    <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <table class="table table-bordered">
-                                                <thead class="thead">
-                                                  <tr>
-                                                    <th scope="col">Ödenmeyen</th>
-                                                    <th scope="col">Ödenen</th>
-                                                    <th scope="col">İptal</th>
-                                                    <th scope="col">Genel</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Mark</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-sm-6">    
-                                                <div class="title">
-                                                    <span>Rezervasyon Borcu</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 col-sm-6">    
-                                                <div class="detail">
-                                                    <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <table class="table table-bordered">
-                                                <thead class="thead">
-                                                  <tr>
-                                                    <th scope="col">Ödenmeyen</th>
-                                                    <th scope="col">Ödenen</th>
-                                                    <th scope="col">İptal</th>
-                                                    <th scope="col">Genel</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Mark</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-sm-6">    
-                                                <div class="title">
-                                                    <span>Rezervasyon Borcu</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 col-sm-6">    
-                                                <div class="detail">
-                                                    <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <table class="table table-bordered">
-                                                <thead class="thead">
-                                                    <tr>
-                                                        <th scope="col">Ödenmeyen</th>
-                                                        <th scope="col">Ödenen</th>
-                                                        <th scope="col">İptal</th>
-                                                        <th scope="col">Genel</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Mark</td>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-sm-6">    
-                                                <div class="title">
-                                                    <span>Dolap Bilgileri</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 col-sm-6">    
-                                                <div class="detail">
-                                                    <button type="button" *ngIf="getMemberLockerCode==null" class="btn btn-sm btn-info" (click)="openPopup()"><i class="fas fa-plus"></i></button>
-                                                    <button type="button" *ngIf="getMemberLockerCode!=null" class="btn btn-sm btn-info" (click)="deleteMemberLocker()"><i class="fas fa-minus"></i></button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <span>Dolap: </span>
-                                            <input type="text" formControlName="getMemberLockerCode" readonly style="border:0">
-                                            </div>
+                            </form>
+                        </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-11 col-sm-6">    
+                                        <div class="title">
+                                            <span>Rezervasyon Borcu</span>
                                         </div>
                                     </div>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-11 col-sm-6">    
-                                                <div class="title">
-                                                    <span>Rezervasyon Borcu</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1 col-sm-6">    
-                                                <div class="detail">
-                                                    <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            <table class="table table-bordered">
-                                                <thead class="thead">
-                                                  <tr>
-                                                    <th scope="col">Ödenmeyen</th>
-                                                    <th scope="col">Ödenen</th>
-                                                    <th scope="col">İptal</th>
-                                                    <th scope="col">Genel</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Mark</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </div>
+                                    <div class="col-md-1 col-sm-6">    
+                                        <div class="detail">
+                                            <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
                                         </div>
+                                    </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead class="thead">
+                                          <tr>
+                                            <th scope="col">Ödenmeyen</th>
+                                            <th scope="col">Ödenen</th>
+                                            <th scope="col">İptal</th>
+                                            <th scope="col">Genel</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Mark</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
                                     </div>
                                 </div>
-                                <!--Locker Save PopUp-->
-                                    <div
-                                    class="modal"
-                                    tabindex="-1"
-                                    role="dialog"
-                                    [ngStyle]="{'display':displayStyle}">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Dolap Seçimi</h4>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-11 col-sm-6">    
+                                        <div class="title">
+                                            <span>Rezervasyon Borcu</span>
                                         </div>
-                                        <div class="modal-body">
-                                            <select required id="selectedLocker" formControlName="selectedLocker" name="selectedLocker" class="custom-select" style="width: 100%;">
-                                                <option value="" >Seçiniz</option>
-                                                <option *ngFor="let item of lockers " [ngValue]="item">{{item.lockerCode}}</option>
-                                            </select>
+                                    </div>
+                                    <div class="col-md-1 col-sm-6">    
+                                        <div class="detail">
+                                            <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead class="thead">
+                                          <tr>
+                                            <th scope="col">Ödenmeyen</th>
+                                            <th scope="col">Ödenen</th>
+                                            <th scope="col">İptal</th>
+                                            <th scope="col">Genel</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Mark</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-11 col-sm-6">    
+                                        <div class="title">
+                                            <span>Rezervasyon Borcu</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-6">    
+                                        <div class="detail">
+                                            <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead class="thead">
+                                            <tr>
+                                                <th scope="col">Ödenmeyen</th>
+                                                <th scope="col">Ödenen</th>
+                                                <th scope="col">İptal</th>
+                                                <th scope="col">Genel</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mark</td>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-11 col-sm-6">    
+                                        <div class="title">
+                                            <span>Dolap Bilgileri</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-6">    
+                                        <div class="detail">
+                                            <button type="button" *ngIf="getMemberLockerCode==null" class="btn btn-sm btn-info" (click)="openPopup()"><i class="fas fa-plus"></i></button>
+                                            <button type="button" *ngIf="getMemberLockerCode!=null" class="btn btn-sm btn-info" (click)="deleteMemberLocker()"><i class="fas fa-minus"></i></button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <span>Dolap: </span>
+                                    <input type="text" [(ngModel)]="getMemberLockerCode" readonly style="border:0">
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-11 col-sm-6">    
+                                        <div class="title">
+                                            <span>Rezervasyon Borcu</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-6">    
+                                        <div class="detail">
+                                            <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead class="thead">
+                                          <tr>
+                                            <th scope="col">Ödenmeyen</th>
+                                            <th scope="col">Ödenen</th>
+                                            <th scope="col">İptal</th>
+                                            <th scope="col">Genel</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Mark</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!--Locker Save PopUp-->
+                            <div
+                            class="modal"
+                            tabindex="-1"
+                            role="dialog"
+                            [ngStyle]="{'display':displayStyle}">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Dolap Seçimi</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <select required id="selectedLocker" [(ngModel)]="selectedLocker" name="selectedLocker" class="custom-select" style="width: 100%;">
+                                        <option value="" >Seçiniz</option>
+                                        <option *ngFor="let item of lockers " [ngValue]="item">{{item.lockerCode}}</option>
+                                    </select>
+                            
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" 
+                                            (click)="closePopup()">
+                                    Kapat
+                                    </button>
+                                    <button type="button" class="btn btn-success" 
+                                            (click)="addLocker()">
+                                    Ekle
+                                    </button>
                                     
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" 
-                                                    (click)="closePopup()">
-                                            Kapat
-                                            </button>
-                                            <button type="button" class="btn btn-success" 
-                                                    (click)="addLocker()">
-                                            Ekle
-                                            </button>
-                                            
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </form>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

@@ -15,6 +15,9 @@ import { City } from 'src/app/cities/city.model';
 import { CityService } from 'src/app/cities/city.service';
 import { LockerService } from 'src/app/lockers/locker.service';
 import { th } from 'date-fns/locale';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';    
 
 @Component({
   selector: 'app-member-details',
@@ -22,6 +25,7 @@ import { th } from 'date-fns/locale';
   styleUrls: ['./member-details.component.css'],
   providers:[MemberService,ConfirmationDialogService,MemberTypeService,MembershipStatusService,CityService,LockerService]
 })
+
 export class MemberDetailsComponent implements OnInit{
 
   member:Member;
@@ -53,7 +57,6 @@ export class MemberDetailsComponent implements OnInit{
 
 
   constructor(private memberService:MemberService,private lockerService:LockerService,private cityService:CityService,private memberTypeService:MemberTypeService,private membershipStatusService:MembershipStatusService,private calendar: NgbCalendar,private router:Router,private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder,private confirmationDialogService: ConfirmationDialogService, private alertify:AlertifyService){
-    
     this.memberForm = new FormGroup({
       firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
       lastName : new FormControl("",[Validators.required, Validators.minLength(3)]),
@@ -77,8 +80,8 @@ export class MemberDetailsComponent implements OnInit{
       dateOfBirth:new FormControl(),
       gender:new FormControl([Validators.required]),
       note:new FormControl(),
-      selectedLocker:new FormControl(),
-      getMemberLockerCode:new FormControl(),
+      // selectedLocker:new FormControl(),
+
     })
 
     
@@ -107,9 +110,11 @@ export class MemberDetailsComponent implements OnInit{
           this.cities =data;
        })
 
-       this.lockerService.getLockersMemberNull().subscribe(data=>{
-        this.lockers =data;
-     })
+
+        this.lockerService.getLockersMemberNull().subscribe(data=>{
+          this.lockers =data;
+       })
+
 
         this.member=data
         this.memberForm.patchValue({
@@ -145,10 +150,11 @@ export class MemberDetailsComponent implements OnInit{
         // console.log(this.member.dateOfMembershipBegin)
     
         this.lockerService.getLockerMemberByMemberId(this.member.id).subscribe(data=>{
+          if(data!=null){
+            this.getMemberLocker =data;
+            this.getMemberLockerCode =this.getMemberLocker.lockerCode;
+          } 
           
-          this.getMemberLocker =data;
-          this.getMemberLockerCode =this.getMemberLocker.lockerCode;
-          this.memberForm.controls["getMemberLockerCode"].setValue(this.getMemberLockerCode);
        })
       })
       
@@ -189,9 +195,9 @@ export class MemberDetailsComponent implements OnInit{
 
 
   updateMember(){
-    
-    console.log(this.memberForm.valid)
 
+    console.log(this.memberForm.valid)
+    console.log(this.memberForm)
     console.log(this.memberForm.get("dateOfMembershipBegin"))
     console.log(this.memberForm.get("dateOfMembershipEnd"))
     
@@ -210,12 +216,13 @@ export class MemberDetailsComponent implements OnInit{
     console.log("getttttt2: "+ this.memberForm.value.city)
 
 
-      console.log(this.memberUpdated.dateOfMembershipBegin); 
       
       this.memberService.updateMember(this.member.id,this.memberUpdated).subscribe(data=>{
       // window.location.reload();
       this.alertify.success("Güncellendi")
-      this.router.navigate(["/members"+"/"+this.member.id])
+      setTimeout(function() {
+        window.location.reload();
+      }, 300); 
     });
 
   }
@@ -228,13 +235,31 @@ export class MemberDetailsComponent implements OnInit{
 
   }
   addLocker(){
-    this.selectedLocker=this.memberForm.get('selectedLocker').value
-    this.selectedLocker.member=this.member;
-    this.lockerService.updateLocker(this.selectedLocker.id,this.selectedLocker).subscribe(data=>{
-      this.alertify.success("Eklendi")
-      window.location.reload();
-      this.closePopup();
-    });
+    
+    this.lockerService.getLockerById(this.selectedLocker.id).subscribe(data=>{
+        var locker=data
+        if(locker.member!=null){
+          
+          this.alertify.error("Dolap üyeye atanmış")
+          setTimeout(function() {
+            window.location.reload();
+          }, 300); 
+          this.closePopup();
+        }
+        else{
+          this.selectedLocker.member=this.member;
+        this.lockerService.updateLocker(this.selectedLocker.id,this.selectedLocker).subscribe(data=>{
+          this.alertify.success("Eklendi")
+          setTimeout(function() {
+            window.location.reload();
+            
+          }, 300); 
+          this.closePopup();
+        });
+        }
+        
+        })
+    
   }
 
   deleteMemberLocker(){
@@ -254,4 +279,5 @@ export class MemberDetailsComponent implements OnInit{
     }) 
     .catch(() => console.log('User dismissed the dialog'));
   }
+
 }
