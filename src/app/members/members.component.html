@@ -66,24 +66,14 @@
                           <td>{{member.firstName | titlecase}}</td>
                           <td>{{member.lastName | titlecase}}</td>
                           <!--isactive-->
-                          <td class="td-small td-center" *ngIf="member.active"><i class="fas fa-check"></i></td>
-                          <td class="td-small td-center" *ngIf="!member.active"><i class="fas fa-times"></i></td>
+                          <td class="td-small td-center" *ngIf="member.active"><i class="fas fa-check checked"></i></td>
+                          <td class="td-small td-center" *ngIf="!member.active"><i class="fas fa-times unchecked"></i></td>
                           <!--is web reservation-->
-                          <td class="td-small td-center" *ngIf="member.webReservation"><i class="fas fa-check"></i></td>
-                          <td class="td-small td-center" *ngIf="!member.webReservation"><i class="fas fa-times"></i></td>
+                          <td class="td-small td-center" *ngIf="member.webReservation"><i class="fas fa-check checked"></i></td>
+                          <td class="td-small td-center" *ngIf="!member.webReservation"><i class="fas fa-times unchecked"></i></td>
                           <td class="td-small"><a routerLink="/members/{{member.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ad</th>
-                            <th>Soyad</th>
-                            <th>Aktif</th>
-                            <th>Web</th>
-                            <th></th>
-                          </tr>
-                    </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->

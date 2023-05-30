@@ -11,4 +11,10 @@ td.td-center{
     text-align: center;
 }
 
+.checked{
+    color: green;
+}
+.unchecked{
+    color: #dc3545;
+}
 

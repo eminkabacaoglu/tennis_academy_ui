@@ -60,20 +60,11 @@
                           <td class="td-small">{{student.id}}</td>
                           <td>{{student.firstName | titlecase}}</td>
                           <td>{{student.lastName | titlecase}}</td>
-                          <td class="td-small td-center" *ngIf="student.active"><i class="fas fa-check"></i></td>
-                          <td class="td-small td-center" *ngIf="!student.active"><i class="fas fa-times"></i></td>
+                          <td class="td-small td-center" *ngIf="student.active"><i class="fas fa-check checked"></i></td>
+                          <td class="td-small td-center" *ngIf="!student.active"><i class="fas fa-times unchecked"></i></td>
                           <td class="td-small"><a routerLink="/students/{{student.id}}" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></a></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ad</th>
-                            <th>Soyad</th>
-                            <th>Aktif</th>
-                            <th></th>
-                          </tr>
-                    </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->
