@@ -411,8 +411,8 @@
                                         </div>
                                     </div>
                                     </div>
-                                    <span>Dolap: </span>
-                                    <input type="text" [(ngModel)]="getMemberLockerCode" readonly style="border:0">
+                                    <input type="text" disabled *ngIf="getMemberLockerCode!=null" [(ngModel)]="getMemberLockerCode" readonly style="border:0" class="locker-info">
+                                    <input type="text" *ngIf="getMemberLockerCode==null" value="Atanmadı" readonly style="border:0" class="locker">
                                     </div>
                                 </div>
                                 <div class="card">
@@ -420,33 +420,16 @@
                                         <div class="row">
                                             <div class="col-md-11 col-sm-6">    
                                         <div class="title">
-                                            <span>Rezervasyon Borcu</span>
+                                            <span>Bakiye</span>
                                         </div>
                                     </div>
                                     <div class="col-md-1 col-sm-6">    
                                         <div class="detail">
-                                            <a routerLink="" class="btn btn-sm btn-info"><i class="fas fa-info-circle"></i></a>
+                                            <button type="button" class="btn btn-sm btn-info"><i class="fas fa-plus"></i></button>
                                         </div>
                                     </div>
                                     </div>
-                                    <table class="table table-bordered">
-                                        <thead class="thead">
-                                          <tr>
-                                            <th scope="col">Ödenmeyen</th>
-                                            <th scope="col">Ödenen</th>
-                                            <th scope="col">İptal</th>
-                                            <th scope="col">Genel</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>Mark</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
+                                    <input type="text" value="0" readonly style="border:0">
                                     </div>
                                 </div>
                             </div>

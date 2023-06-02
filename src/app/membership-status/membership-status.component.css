@@ -10,3 +10,6 @@ td.td-small{
 td.td-center{
     text-align: center;
 }
+section{
+    padding-bottom: 0;
+}

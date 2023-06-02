@@ -37,3 +37,20 @@ td{
 .data-input-right{
     padding-left: 0;
 }
+.locker-info{
+    width: 25%;
+    background-color: #3CBDC8;
+    color: white;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+.locker{
+    width: 25%;
+    background-color:#C82333;
+    color: white;
+    border-radius: 0.25rem;
+    text-align: center;
+}
+section{
+    padding-bottom: 0;
+}

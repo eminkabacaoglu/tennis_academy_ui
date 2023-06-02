@@ -17,4 +17,6 @@ td.td-center{
 .unchecked{
     color: #dc3545;
 }
-
+section{
+    padding-bottom: 0;
+}
