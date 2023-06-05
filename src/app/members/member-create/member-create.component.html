@@ -190,7 +190,7 @@
                                                 <label for="membershipStatus">Üyelik Statüsü</label>
                                                 <select id="membershipStatus" formControlName="membershipStatus" name="membershipStatus" class="custom-select" style="width: 100%;">
                                                     <option value="" disabled>Seçiniz</option>
-                                                    <option *ngFor="let item of membershipStatuses " [ngValue]="item.id">{{item.statusName}}</option>
+                                                    <option *ngFor="let item of membershipStatuses " [ngValue]="item">{{item.statusName}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@
                                                 <label for="memberType">Üye Tipi</label>
                                                 <select id="memberType" formControlName="memberType" name="memberType" class="custom-select" style="width: 100%;">
                                                     <option value="" disabled>Seçiniz</option>
-                                                    <option *ngFor="let item of memberTypes " [ngValue]="item.id">{{item.description}}</option>
+                                                    <option *ngFor="let item of memberTypes " [ngValue]="item">{{item.description}}</option>
                                                 </select>
                                             </div>
 

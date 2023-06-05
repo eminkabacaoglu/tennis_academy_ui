@@ -104,7 +104,7 @@ export class MemberCreateComponent implements OnInit{
     }
 
     this.memberService.createMember(this.member).subscribe(data=>{
-        console.log(this.member)
+      
         this.alertify.success("Kaydedildi")
         this.router.navigate(["/members"+"/"+data.id])
       });
