@@ -9,6 +9,7 @@ export interface Member extends Person{
     dateOfMembershipEnd?:Date
     membershipStatus?:MembershipStatus
     memberType?:MemberType
+    referenceMember?:Member
     note?:string
 
 }

@@ -26,7 +26,7 @@ td{
     background-color: #E0EBF9;
 }
 .row .card-body{
-    padding: 0.5rem;
+    padding: 0.45rem;
 }
 .data-input{
     padding: 0;
@@ -37,16 +37,20 @@ td{
 .data-input-right{
     padding-left: 0;
 }
-.locker-info{
+.show-info{
     width: 25%;
     background-color: #3CBDC8;
     color: white;
     border-radius: 0.25rem;
     text-align: center;
+    padding: 0;
 }
-.locker{
+.long-info{
+    width: 75% !important;
+    padding: 0;
+}
+.empty-info{
     width: 25%;
-    background-color:#C82333;
     color: white;
     border-radius: 0.25rem;
     text-align: center;
@@ -54,3 +58,7 @@ td{
 section{
     padding-bottom: 0;
 }
+.card{
+    margin-bottom: 0.45rem;
+}
+

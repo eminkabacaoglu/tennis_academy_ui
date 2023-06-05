@@ -43,16 +43,31 @@ export class MemberDetailsComponent implements OnInit{
   stringifiedData:JSON;
   lockers:Locker[];
   selectedLocker:Locker;
+  selectedMember:Member;
   getMemberLocker:Locker;
   getMemberLockerCode:string;
+  getReferenceMember:Member;
+  getReferenceMemberInfo:string;
+  members:Member[];
+  searchTerm:string;
 
   displayStyle = "none";
+  displayStyleReferenceMember= "none";
   
   openPopup() {
     this.displayStyle = "block";
   }
+  openReferencePopup() {
+    this.displayStyleReferenceMember = "block";
+    this.memberService.getActiveMembers().subscribe(data=>{
+      this.members =data.filter(m=>m.id!=this.member.id);
+    })
+  }
   closePopup() {
     this.displayStyle = "none";
+  }
+  closeReferencePopup() {
+    this.displayStyleReferenceMember = "none";
   }
 
 
@@ -80,7 +95,6 @@ export class MemberDetailsComponent implements OnInit{
       dateOfBirth:new FormControl(),
       gender:new FormControl([Validators.required]),
       note:new FormControl(),
-      // selectedLocker:new FormControl(),
 
     })
 
@@ -139,10 +153,12 @@ export class MemberDetailsComponent implements OnInit{
           dateOfMembershipBegin:new Date(this.member.dateOfMembershipBegin),
           dateOfMembershipEnd:new Date(this.member.dateOfMembershipEnd),
           dateOfBirth:new Date(this.member.dateOfBirth),
-          note:this.member.note,
+          note:this.member.note
         
         })
-        
+        this.getReferenceMember=this.member.referenceMember;
+        this.getReferenceMemberInfo=this.member.referenceMember.id+"-"+this.member.referenceMember.firstName+" "+this.member.referenceMember.lastName;
+
         this.memberForm.controls["dateOfMembershipBegin"].setValue(this.setNg(new Date(this.member.dateOfMembershipBegin)))
         this.memberForm.controls["dateOfMembershipEnd"].setValue(this.setNg(new Date(this.member.dateOfMembershipEnd)))
         this.memberForm.controls["dateOfBirth"].setValue(this.setNg(new Date(this.member.dateOfBirth)))
@@ -206,11 +222,11 @@ export class MemberDetailsComponent implements OnInit{
       console.log(this.memberForm.value.dateOfMembershipBegin)
       console.log(this.memberForm.value.dateOfMembershipEnd)
       this.memberUpdated=Object.assign({},this.memberForm.value)
+      this.memberUpdated.referenceMember=this.getReferenceMember
       this.memberUpdated.dateOfMembershipBegin=this.setDate(this.memberForm.value.dateOfMembershipBegin)
       this.memberUpdated.dateOfMembershipEnd=this.setDate(this.memberForm.value.dateOfMembershipEnd)
       this.memberUpdated.dateOfBirth=this.setDate(this.memberForm.value.dateOfBirth)
     }
-      
       this.memberService.updateMember(this.member.id,this.memberUpdated).subscribe(data=>{
       // window.location.reload();
       this.alertify.success("Güncellendi")
@@ -242,13 +258,13 @@ export class MemberDetailsComponent implements OnInit{
         }
         else{
           this.selectedLocker.member=this.member;
-        this.lockerService.updateLocker(this.selectedLocker.id,this.selectedLocker).subscribe(data=>{
-          this.alertify.success("Eklendi")
-          setTimeout(function() {
-            window.location.reload();
-            
-          }, 300); 
-          this.closePopup();
+          this.lockerService.updateLocker(this.selectedLocker.id,this.selectedLocker).subscribe(data=>{
+            this.alertify.success("Eklendi")
+            setTimeout(function() {
+              window.location.reload();
+              
+            }, 300); 
+            this.closePopup();
         });
         }
         
@@ -256,14 +272,38 @@ export class MemberDetailsComponent implements OnInit{
     
   }
 
+  addReferenceMember(){
+          this.member.referenceMember=this.selectedMember;
+          this.memberService.updateMember(this.member.id,this.member).subscribe(data=>{
+            this.alertify.success("Eklendi")
+            setTimeout(function() {
+              window.location.reload();
+            }, 300); 
+            this.closePopup();
+        });
+    
+  }
+
   deleteMemberLocker(){
     this.getMemberLocker.member=null;
     this.lockerService.updateLocker(this.getMemberLocker.id,this.getMemberLocker).subscribe(data=>{
       this.alertify.success("Dolap Silindi")
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload();
+        
+      }, 300); 
     });
   }
-
+  deleteReferenceMember(){
+    this.member.referenceMember=null;
+    this.memberService.updateMember(this.member.id,this.member).subscribe(data=>{
+      this.alertify.success("Referans Silindi")
+      setTimeout(function() {
+        window.location.reload();
+      }, 300); 
+      this.closePopup();
+    });
+  }
 
   public openConfirmationDialog() {
     this.confirmationDialogService.confirm('Lütfen Onaylayın...', 'Kaydı Silmek İStediğinize Emin Misiniz ??')

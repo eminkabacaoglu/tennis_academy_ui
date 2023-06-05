@@ -56,13 +56,13 @@ export class MemberService{
     }
 
     createMember(member:Member):Observable<Member>{
-    
         const httpOptions= {
             headers: new HttpHeaders({
                 'Content-Type':'application/json',
                 'Autohorization':'Token'
             }),
         }
+        console.log(member)
         return this.http.post<Member>(this.url,member,httpOptions).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)), // tap ile bu aiamada da veriyi alabiliyoruz
             catchError(this.handleError)
@@ -79,7 +79,6 @@ export class MemberService{
         }
         // member= JSON.parse(JSON.stringify(member));
         // 
-        console.log(member)
         return this.http.put<Member>(this.url+"/"+id,member,httpOptions).pipe(
             tap(data=>console.log("Servis üzerinde pipe aracılığı ile gelen: "+data)),
             catchError(this.handleError),

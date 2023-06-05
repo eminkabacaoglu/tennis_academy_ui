@@ -1,7 +1,5 @@
 import { City } from './../../cities/city.model';
 import { CityService } from './../../cities/city.service';
-import { th } from 'date-fns/locale';
-import { PaymentTypeService } from './../../payment-types/payment-type.service';
 import { MembershipStatusService } from './../../membership-status/membership-status.service';
 import { MembershipStatus } from './../../membership-status/membership-status.model';
 import { MemberType } from './../../member-types/member-type.model';
@@ -57,19 +55,19 @@ export class MemberCreateComponent implements OnInit{
   memberForm = new FormGroup({
     firstName : new FormControl("",[Validators.required, Validators.minLength(3)]),
     lastName : new FormControl("",[Validators.required, Validators.minLength(3)]),
-    nationalId: new FormControl(""),
-    job : new FormControl(""),
-    placeOfBirth : new FormControl(""),
-    fatherName : new FormControl(""),
-    motherName : new FormControl(""),
-    membershipStatus : new FormControl(),
+    nationalId: new FormControl(),
+    job : new FormControl(),
+    placeOfBirth : new FormControl(),
+    fatherName : new FormControl(),
+    motherName : new FormControl(),
+    membershipStatus : new FormControl(null,[Validators.required]),
     city : new FormControl(),
-    memberType : new FormControl(),
+    memberType : new FormControl(null,[Validators.required]),
     email : new FormControl(),
     mobilePhone : new FormControl(),
     homePhone : new FormControl(),
     gender:new FormControl(),
-    note : new FormControl(""),
+    note : new FormControl(),
     dateOfMembershipBegin:new FormControl(),
     dateOfMembershipEnd:new FormControl(),
     dateOfBirth:new FormControl(),
@@ -94,8 +92,10 @@ export class MemberCreateComponent implements OnInit{
     //   nationalId:this.memberForm.value.nationalId,
 
     // }
+
     if(this.memberForm.valid){
       this.member=Object.assign({},this.memberForm.value)
+      this.member.referenceMember=null;
       this.member.dateOfMembershipBegin=this.setDate(this.memberForm.value.dateOfMembershipBegin)
       this.member.dateOfMembershipEnd=this.setDate(this.memberForm.value.dateOfMembershipEnd)
       this.member.dateOfBirth=this.setDate(this.memberForm.value.dateOfBirth)
@@ -104,6 +104,7 @@ export class MemberCreateComponent implements OnInit{
     }
 
     this.memberService.createMember(this.member).subscribe(data=>{
+        console.log(this.member)
         this.alertify.success("Kaydedildi")
         this.router.navigate(["/members"+"/"+data.id])
       });
