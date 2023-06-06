@@ -49,10 +49,19 @@ export class MemberDetailsComponent implements OnInit{
   getReferenceMember:Member;
   getReferenceMemberInfo:string;
   members:Member[];
-  searchTerm:string;
-
+  filteredMembers:Member[];
+  searchTerm: string = '';
   displayStyle = "none";
+  displayStyleSelect="block"
   displayStyleReferenceMember= "none";
+
+
+  
+  filterOptions() {
+    this.filteredMembers = this.members.filter(option =>
+      (option.firstName+" "+option.lastName).toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
   
   openPopup() {
     this.displayStyle = "block";
@@ -61,7 +70,9 @@ export class MemberDetailsComponent implements OnInit{
     this.displayStyleReferenceMember = "block";
     this.memberService.getActiveMembers().subscribe(data=>{
       this.members =data.filter(m=>m.id!=this.member.id);
+      this.filteredMembers=this.members;
     })
+   
   }
   closePopup() {
     this.displayStyle = "none";
@@ -273,15 +284,20 @@ export class MemberDetailsComponent implements OnInit{
   }
 
   addReferenceMember(){
-          this.member.referenceMember=this.selectedMember;
-          this.memberService.updateMember(this.member.id,this.member).subscribe(data=>{
-            this.alertify.success("Eklendi")
-            setTimeout(function() {
-              window.location.reload();
-            }, 300); 
-            this.closePopup();
-        });
-    
+          console.log(this.selectedMember)
+          if(this.selectedMember!=null){
+            this.member.referenceMember=this.selectedMember;
+            this.memberService.updateMember(this.member.id,this.member).subscribe(data=>{
+              this.alertify.success("Eklendi")
+              setTimeout(function() {
+                window.location.reload();
+              }, 300); 
+              this.closePopup();
+          });
+            
+          }else{
+            this.alertify.error("Seçim Yapılmadı")
+          }
   }
 
   deleteMemberLocker(){

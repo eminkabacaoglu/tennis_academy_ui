@@ -448,7 +448,7 @@
                                         </div>
                                     </div>
                                     </div>
-                                    <input type="text" value="0" readonly style="border:0">
+                                    <input type="text" class="balance" value="0" readonly style="border:0">
                                     </div>
                                 </div>
                                 </div>
@@ -497,10 +497,9 @@
                                     <h4 class="modal-title">Referans Üye</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search..." />
-                                    <select required id="selectedMember" [(ngModel)]="selectedMember" name="selectedMember" class="custom-select" style="width: 100%;">
-                                        <option value="" >Seçiniz</option>
-                                        <option *ngFor="let item of members " [ngValue]="item">{{item.id}}-{{item.firstName}} {{item.lastName}}</option>
+                                    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (keyup)="filterOptions()" />
+                                    <select size="5" required id="selectedMember" [(ngModel)]="selectedMember" name="selectedMember" class="custom-select" style="width: 100%;">
+                                        <option *ngFor="let item of filteredMembers " [ngValue]="item">{{item.id}}-{{item.firstName}} {{item.lastName}}</option>
                                     </select>
                                 </div>
                                 <div class="modal-footer">
